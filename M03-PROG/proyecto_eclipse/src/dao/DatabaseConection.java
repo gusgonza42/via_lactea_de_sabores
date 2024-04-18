@@ -19,7 +19,8 @@ public class DatabaseConection {
     public static final String DELETE_TEST = "DELETE FROM users WHERE id = ?";
     static Connection conn;
 
-    public void init() throws SQLException {
+    public void init
+    () throws SQLException {
         //conectar
 
 
