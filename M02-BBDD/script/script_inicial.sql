@@ -5,7 +5,7 @@ CREATE DATABASE vialacteadesabores;
 USE vialacteadesabores;
 
 -- Crear la tabla de usuarios
-CREATE TABLE USUARIOS (
+CREATE TABLE USUARIO (
     id INT AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     apellido1 VARCHAR(255) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE USUARIOS (
     fecha_nacimiento DATE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     fecha_registro DATE NOT NULL,
-    telefono VARCHAR(9) CHECK ( telefono REGEXP '^[0-9]{8}$'),
+    telefono VARCHAR(9) CHECK ( telefono REGEXP '^[0-9]{9}$'),
     PRIMARY KEY(id)
 );
 
@@ -28,7 +28,7 @@ CREATE TABLE CHEF(
 );
 
 -- Crear la tabla de camareros
-CREATE TABLE CAMAREROS (
+CREATE TABLE CAMARERO (
     id_usuario INT,
     salario DECIMAL(8,2) CHECK (salario > 0),
     fecha_contratacion DATE NOT NULL,
@@ -44,12 +44,13 @@ CREATE TABLE MESA (
     num_mesa INT CHECK (num_mesa > 0),
     id_camarero INT,
     fecha_registro DATE NOT NULL,
+    disponibilidad BOOLEAN DEFAULT TRUE,
     PRIMARY KEY(num_mesa),
     FOREIGN KEY (id_camarero) REFERENCES CAMAREROS(id_usuario)
 );
 
 -- Crear tabla clientes
-CREATE TABLE CLIENTES (
+CREATE TABLE CLIENTE (
     id_usuario INT,
     comensales INT,
     fecha_reserva DATE NOT NULL,
@@ -58,7 +59,7 @@ CREATE TABLE CLIENTES (
 );
 
 -- Crear tabla intermedia clientes_mesa
-CREATE TABLE CLIENTES_MESA(
+CREATE TABLE CLIENTE_MESA(
     id_usuario INT,
     num_mesa INT,
     fecha_reserva DATE NOT NULL,
@@ -79,7 +80,7 @@ CREATE TABLE COMANDA (
 -- Crear la tabla de menus
 CREATE TABLE MENU (
     id_menu INT AUTO_INCREMENT,
-    nombre_menu VARCHAR(255) NOT NULL,
+    nombre_menu enum('', 'Menu degustacion', 'Menu infantil') NOT NULL,
     descripcion TEXT NOT NULL,
     precio DECIMAL(10,2) CHECK (precio > 0),
     PRIMARY KEY(id_menu)
