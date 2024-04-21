@@ -1,0 +1,75 @@
+id_menu,id_comanda,alergenos
+1,20,"frutos de cáscara, pescado, sésamo, moluscos"
+1,10,"cacahuetes, soja, gluten, frutos de cáscara"
+2,11,"cacahuetes, gluten, moluscos, crustáceos"
+2,13,"cacahuetes, leche, apio, huevos"
+3,25,"moluscos, mostaza"
+3,8,"leche, pescado, mostaza"
+3,7,"mostaza, soja, crustáceos, cacahuetes"
+3,11,"sulfitos, frutos de cáscara, huevos, gluten"
+4,13,leche
+4,7,"sulfitos, mostaza"
+4,10,gluten
+4,3,"crustáceos, gluten"
+4,18,"crustáceos, moluscos"
+5,25,apio
+5,12,gluten
+5,13,"cacahuetes, sésamo, leche"
+6,16,"leche, crustáceos, gluten, apio"
+7,6,"cacahuetes, sésamo, sulfitos, mostaza"
+8,20,"frutos de cáscara, cacahuetes, pescado, crustáceos"
+8,12,"cacahuetes, sulfitos, pescado, gluten"
+8,8,"soja, pescado"
+9,2,"apio, cacahuetes, mostaza"
+9,11,moluscos
+9,4,"soja, huevos, cacahuetes, moluscos"
+9,16,sulfitos
+9,9,"apio, gluten, pescado"
+10,10,"huevos, sésamo, apio, soja"
+10,3,"cacahuetes, soja, moluscos, frutos de cáscara"
+10,1,frutos de cáscara
+10,16,sésamo
+11,20,"soja, frutos de cáscara"
+11,6,"pescado, apio"
+11,7,"huevos, sulfitos, apio"
+11,18,"mostaza, moluscos, sésamo, sulfitos"
+12,19,"soja, frutos de cáscara, gluten, cacahuetes"
+12,24,"huevos, mostaza, leche"
+13,25,"gluten, sésamo, crustáceos, moluscos"
+13,24,"cacahuetes, huevos, apio"
+13,11,"gluten, pescado"
+13,2,"mostaza, gluten, soja"
+14,20,sésamo
+14,24,"moluscos, gluten, sulfitos"
+15,6,"moluscos, leche, sésamo, mostaza"
+16,1,"apio, frutos de cáscara, mostaza"
+16,16,"cacahuetes, gluten, huevos"
+17,10,"sulfitos, huevos"
+17,24,"leche, frutos de cáscara, sésamo"
+17,9,mostaza
+17,3,moluscos
+17,18,"mostaza, pescado, huevos"
+18,20,"mostaza, soja"
+18,3,apio
+18,23,"soja, sulfitos, moluscos, frutos de cáscara"
+18,14,cacahuetes
+18,4,"soja, crustáceos, frutos de cáscara"
+19,1,huevos
+19,21,leche
+19,19,moluscos
+19,22,"frutos de cáscara, cacahuetes"
+20,16,"mostaza, crustáceos"
+20,1,"soja, leche"
+20,22,crustáceos
+21,22,moluscos
+21,3,"leche, mostaza, soja"
+22,1,moluscos
+22,10,"leche, gluten, apio, pescado"
+22,4,gluten
+23,7,"leche, frutos de cáscara, moluscos"
+23,25,apio
+23,18,"cacahuetes, apio, huevos, moluscos"
+23,20,leche
+23,19,"sulfitos, huevos, moluscos, sésamo"
+24,4,"huevos, cacahuetes, sulfitos"
+25,9,sulfitos
