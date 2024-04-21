@@ -159,7 +159,7 @@ def generar_datos_menu_comanda(num_menus, num_comandas):
 
 # Generar datos aleatorios para la tabla de platos
 def generar_datos_platos(num_datos):
-    platos_referentes = ['Crema de', 'Leche de', 'Queso de', 'Mantequilla de', 'Nata de', 'Yogur de', 'Helado de', 'Espuma de']
+    platos_referentes = ['Crema de', 'Leche de', 'Queso de', 'Mantequilla de', 'Nata de', 'Yogur de', 'Helado de', 'Espuma de', 'Sopa de', 'Ensalada de', 'Tarta de', 'Puré de', 'Risotto de', 'Carpaccio de', 'Tostada de', 'Pasta de', 'Salsa de', 'Guiso de', 'Tortilla de', 'Parrillada de']
 
     datos = []
     for i in range(num_datos):
