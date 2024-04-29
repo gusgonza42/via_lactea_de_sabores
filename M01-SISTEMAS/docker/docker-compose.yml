@@ -5,6 +5,6 @@ services:
       context: ../../
       dockerfile: M01-SISTEMAS/docker/Dockerfile
     ports:
-      - '3306:3306'
+      - '3307:3306'
     environment:
       MYSQL_ROOT_PASSWORD: Sabores1234

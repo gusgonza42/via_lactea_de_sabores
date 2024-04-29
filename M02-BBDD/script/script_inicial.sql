@@ -14,6 +14,7 @@ CREATE TABLE USUARIO (
     email VARCHAR(255) UNIQUE NOT NULL,
     fecha_registro DATE NOT NULL,
     telefono VARCHAR(9) CHECK ( telefono REGEXP '^[0-9]{9}$'),
+    contrasena VARCHAR(255) NOT NULL,
     PRIMARY KEY(id)
 );
 
@@ -24,7 +25,7 @@ CREATE TABLE CHEF(
     fecha_contratacion DATE NOT NULL,
     disponible BOOLEAN DEFAULT TRUE,
     PRIMARY KEY (id_usuario),
-    FOREIGN KEY(id_usuario) REFERENCES USUARIOS(id)
+    FOREIGN KEY(id_usuario) REFERENCES USUARIO(id)
 );
 
 -- Crear la tabla de camareros
@@ -32,9 +33,9 @@ CREATE TABLE CAMARERO (
     id_usuario INT,
     salario DECIMAL(8,2) CHECK (salario > 0),
     fecha_contratacion DATE NOT NULL,
-    disponibilidad BOOLEAN DEFAULT TRUE,
+    disponibilidad BOOLEAN,
     PRIMARY KEY(id_usuario),
-    FOREIGN KEY(id_usuario) REFERENCES USUARIOS(id)
+    FOREIGN KEY(id_usuario) REFERENCES USUARIO(id)
 );
 
 
@@ -46,16 +47,16 @@ CREATE TABLE MESA (
     fecha_registro DATE NOT NULL,
     disponibilidad BOOLEAN DEFAULT TRUE,
     PRIMARY KEY(num_mesa),
-    FOREIGN KEY (id_camarero) REFERENCES CAMAREROS(id_usuario)
+    FOREIGN KEY (id_camarero) REFERENCES CAMARERO(id_usuario)
 );
 
 -- Crear tabla clientes
 CREATE TABLE CLIENTE (
     id_usuario INT,
     comensales INT,
-    fecha_reserva DATE NOT NULL,
+    fecha_ultimaReserva DATE,
     PRIMARY KEY (id_usuario),
-    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id)
+    FOREIGN KEY (id_usuario) REFERENCES USUARIO(id)
 );
 
 -- Crear tabla intermedia clientes_mesa
@@ -64,7 +65,7 @@ CREATE TABLE CLIENTE_MESA(
     num_mesa INT,
     fecha_reserva DATE NOT NULL,
     PRIMARY KEY (id_usuario,num_mesa),
-    FOREIGN KEY (id_usuario) REFERENCES CLIENTES(id_usuario),
+    FOREIGN KEY (id_usuario) REFERENCES CLIENTE(id_usuario),
     FOREIGN KEY (num_mesa) REFERENCES MESA(num_mesa)
 );
 -- Crear la tabla de comandas
@@ -80,7 +81,7 @@ CREATE TABLE COMANDA (
 -- Crear la tabla de menus
 CREATE TABLE MENU (
     id_menu INT AUTO_INCREMENT,
-    nombre_menu enum('', 'Menu degustacion', 'Menu infantil') NOT NULL,
+    nombre_menu VARCHAR(255) NOT NULL,
     descripcion TEXT NOT NULL,
     precio DECIMAL(10,2) CHECK (precio > 0),
     PRIMARY KEY(id_menu)
