@@ -1,0 +1,277 @@
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>174</x><y>54</y><w>222</w><h>342</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Usuario
+--
+- id: int
+- nombre: String
+- apellido1: String
+- apellido2: String
+- fechaNacimiento: Date
+- email: String
+- fechaRegistro: Date
+- telefono: String
+--
+
++Usuario()
++getNombre(): String
++setNombre(nombre: String): void
++getApellido1(): String
++setApellido1(apellido1: String): void
++getApellido2(): String
++setApellido2(apellido2: String): void
++getFechaNacimiento(): Date
++setFechaNacimiento(fechaNacimiento: Date): void
++getEmail(): String
++setEmail(email: String): void
++getFechaRegistro(): Date
++setFechaRegistro(fechaRegistro: Date): void
++getTelefono(): String
++setTelefono(telefono: String): void
+--
+
+Responsabilidades:
+- Guardar datos del usuario.
+- Proporcionar métodos para acceder y modificar los atributos.
+
+Restricciones:
+- El email debe ser único.
+
+Descripción:
+La clase `Usuario` representa a un usuario del sistema.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>144</y><w>228</w><h>222</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Cliente
+--
+- usuario: Usuario
+- comensales: int
+- numeroMesa: int
+- fechaReserva: Date
+--
+
++Cliente()
++getIdUsuario(): int
++setIdUsuario(idUsuario: int): void
++getComensales(): int
++setComensales(comensales: int): void
++getNumeroMesa(): int
++setNumeroMesa(numeroMesa: int): void
++getFechaReserva(): Date
++setFechaReserva(fechaReserva: Date): void
+--
+
+Responsabilidades:
+- Guardar datos del cliente.
+- Proporcionar métodos para acceder y modificar los atributos.
+
+Descripción:
+La clase `Cliente` representa a un cliente del restaurante.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>876</x><y>108</y><w>198</w><h>234</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Mesa
+--
+- numero: int
+- camareroAsignado: Camarero
+- clienteAsignado: Cliente
+- comandas: List&lt;Comanda&gt;
+--
+
++Mesa()
++getNumero(): int
++setNumero(numero: int): void
++getCamareroAsignado(): Camarero
++setCamareroAsignado(camarero: Camarero): void
++getClienteAsignado(): Cliente
++setClienteAsignado(cliente: Cliente): void
++agregarComanda(comanda: Comanda): void
++listarComandas(): List&lt;Comanda&gt;
+--
+
+Responsabilidades:
+- Guardar datos de la mesa.
+- Manejar la asignación de camareros y clientes.
+- Mantener una lista de comandas asociadas a la mesa.
+
+Descripción:
+La clase `Mesa` representa una mesa del restaurante.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1134</x><y>570</y><w>168</w><h>186</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Comanda
+--
+- id: int
+- fecha: Date
+- pagado: boolean
+- mesa: Mesa
+--
+
++Comanda()
++getId(): int
++setId(id: int): void
++getFecha(): Date
++setFecha(fecha: Date): void
++isPagado(): boolean
+setPagado(pagado: boolean): void
++getMesa(): Mesa
++setMesa(mesa: Mesa): void
+--
+
+Responsabilidades:
+- Guardar datos de la comanda.
+
+Descripción:
+La clase `Comanda` representa una orden realizada por un cliente en una mesa del restaurante</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>138</x><y>540</y><w>228</w><h>198</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Trabajador
+--
+- salario: BigDecimal
+- fechaContratacion: Date
+- disponible: boolean
+--
+
++Trabajador()
++getSalario(): BigDecimal
++setSalario(salario: BigDecimal): void
++getFechaContratacion(): Date
++setFechaContratacion(fechaContratacion: Date): void
++isDisponible(): boolean
+setDisponible(disponible: boolean): void
+--
+
+Responsabilidades:
+- Guardar datos del trabajador.
+- Proporcionar métodos para acceder y modificar los atributos.
+
+Descripción:
+La clase `Trabajador` representa a un trabajador del restaurante.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>918</x><y>786</y><w>186</w><h>258</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Menu
+--
+- id: int
+- nombre: String
+- descripcion: String
+- precio: float
+- platos: List&lt;Plato&gt;
+--
+
++Menu()
++getId(): int
++setId(id: int): void
++getNombre(): String
++setNombre(nombre: String): void
++getDescripcion(): String
++setDescripcion(descripcion: String): void
++getPrecio(): BigDecimal
++setPrecio(precio: BigDecimal): void
++agregarPlato(plato: Plato): void
++quitarPlato(plato: Plato): void
++listarPlatos(): List&lt;Plato&gt;
+--
+
+Responsabilidades:
+- Guardar datos del menú.
+- Manejar los platos asociados al menú.
+
+Descripción:
+La clase `Menu` representa un menú del restaurante</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>702</x><y>1218</y><w>162</w><h>186</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Plato
+--
+- id: int
+- nombre: String
+- descripcion: String
+- chef: Chef
+--
+
++Plato()
++getId(): int
++setId(id: int): void
++getNombre(): String
++setNombre(nombre: String): void
++getDescripcion(): String
++setDescripcion(descripcion: String): void
++getChef(): Chef
++setChef(chef: Chef): void
+--
+
+Responsabilidades:
+- Guardar datos del plato.
+
+Descripción:
+La clase `Plato` representa un plato del menú del restaurante.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1320</x><y>204</y><w>276</w><h>222</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Factura
+--
+- id: int
+- precioTotal: float
+- fecha: Date
+- comanda: Comanda
+--
+
++Factura()
++getId(): int
++setId(id: int): void
++getPrecioTotal(): BigDecimal
++setPrecioTotal(precioTotal: BigDecimal): void
++getFecha(): Date
++setFecha(fecha: Date): void
++getComanda(): Comanda
++setComanda(comanda: Comanda): void
+--
+
+Responsabilidades:
+- Guardar datos de la factura.
+- Relacionar la factura con una comanda.
+
+Descripción:
+La clase `Factura` representa la factura asociada a una comanda del restaurante</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>456</x><y>588</y><w>318</w><h>150</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+AsignacionMesa
+--
+- trabajador: Trabajador
+- mesa: Mesa
+--
+
++AsignacionMesa()
++asignarMesa(trabajador: Trabajador, mesa: Mesa): void
++desasignarMesa(trabajador: Trabajador, mesa: Mesa): void
++reasignarMesa(trabajador: Trabajador, mesa: Mesa): void
+--
+
+Responsabilidades:
+- Asignar, desasignar y reasignar una mesa a un trabajador.
+
+Descripción:
+La clase `AsignacionMesa` representa la asignación de mesas a los camareros del restaurante.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1272</x><y>942</y><w>282</w><h>222</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Producto
+--
+- id: int
+- nombre: String
+- stock: int
+- proveedor: String
+--
+
++Producto()
++getId(): int
++setId(id: int): void
++getNombre(): String
++setNombre(nombre: String): void
++getStock(): int
++setStock(stock: int): void
++getProveedor(): String
++setProveedor(proveedor: String): void
+--
+
+Responsabilidades:
+- Guardar datos del producto.
+
+Descripción:
+La clase `Producto` representa un producto utilizado en la cocina del restaurante.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>372</x><y>954</y><w>180</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Chef
+--
+--
+
+Responsabilidades:
+- Representar a un chef en el sistema.
+
+Descripción:
+La clase `Chef` representa a un chef del restaurante,
+que hereda de la clase `Trabajador`.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>594</x><y>942</y><w>192</w><h>96</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Camarero
+--
+--
+
+Responsabilidades:
+- Representar a un camarero en el sistema.
+
+Descripción:
+La clase `Camarero` representa a un camarero 
+del restaurante, que hereda de la clase `Trabajador`.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>258</x><y>732</y><w>444</w><h>222</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;720;350</additional_attributes></element><element><id>Relation</id><coordinates><x>192</x><y>732</y><w>288</w><h>234</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;460;370</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>240</y><w>132</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;200;40</additional_attributes></element><element><id>Relation</id><coordinates><x>252</x><y>390</y><w>24</w><h>162</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>20;10;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>732</x><y>258</y><w>156</w><h>30</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;30;240;10</additional_attributes></element><element><id>Relation</id><coordinates><x>714</x><y>336</y><w>252</w><h>618</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;1010;400;10</additional_attributes></element><element><id>Relation</id><coordinates><x>462</x><y>1038</y><w>318</w><h>192</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;510;300</additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>336</y><w>186</w><h>246</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;290;390</additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>336</y><w>588</w><h>216</h></coordinates><panel_attributes></panel_attributes><additional_attributes>960;10;10;340</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>546</y><w>276</w><h>54</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;440;70</additional_attributes></element><element><id>Relation</id><coordinates><x>654</x><y>336</y><w>264</w><h>264</h></coordinates><panel_attributes></panel_attributes><additional_attributes>420;10;10;420</additional_attributes></element><element><id>Relation</id><coordinates><x>834</x><y>1056</y><w>450</w><h>174</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;270;730;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1266</x><y>750</y><w>150</w><h>204</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;230;320</additional_attributes></element><element><id>Relation</id><coordinates><x>1026</x><y>576</y><w>120</w><h>222</h></coordinates><panel_attributes></panel_attributes><additional_attributes>180;10;10;350</additional_attributes></element><element><id>Relation</id><coordinates><x>1260</x><y>420</y><w>198</w><h>162</h></coordinates><panel_attributes></panel_attributes><additional_attributes>310;10;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>798</x><y>1038</y><w>228</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>360;10;10;300</additional_attributes></element></diagram>

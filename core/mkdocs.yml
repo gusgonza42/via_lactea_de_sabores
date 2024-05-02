@@ -1,0 +1,88 @@
+site_name: Vía Lactea De Sabores
+repo_name: gitlab.com/dax_mesapp_g5/g5_via_lactea_de_sabores
+site_dir: public
+docs_dir: ../docs
+theme:
+  language: es
+  name: material
+  features:
+    - navigation.instant
+    - navigation.indexes
+   # - navigation.sections
+    - navigation.path
+    - header.autohide
+    - search.highlight
+    - search.suggest
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - content.code.copy
+    - content.action.edit
+
+  icon:
+    repo: fontawesome/regular/utensils
+    edit: material/pencil
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - md_in_html
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+plugins:
+  - mkdocs-video
+  - search:
+      lang:
+        - es
+        - en
+  - git-authors
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - with-pdf:
+      cover_logo: images/enunciat/diagrama-xarxa.png
+      cover_subtitle: Solució exercici
+      two_columns_level: 3
+      output_path: document.pdf
+nav:
+  - Introducción: introduccion.md
+  - Sistemas:
+      - Docker: sistemas/docker.md
+  - BBDD:
+      - Diagramas: bbdd/diagramas.md
+      - Script Inicial: bbdd/script_inicial.md
+      - Planteamientos de Funciones: bbdd/planteamientos.md
+      - Funciones: bbdd/funciones.md
+  - Programación:
+      - Conección con Bases de Datos: programacion/conexion_bbdd.md
+      - Carga de Datos a la BBDD: programacion/carga_datos.md
+      - Uso de Funciones en Java: programacion/uso_funciones_java.md
+  - Entornos:
+      - Casos de Uso: entorns/casos_uso.md
+      - Diagramas de Clases: entorns/diagramas_clases.md
+      - MkDocs: entorns/mkdocs.md
+  - Utils:
+      - Git: utils/git.md
+      - Recursos de Ayuda: utils/recursos_docs.md

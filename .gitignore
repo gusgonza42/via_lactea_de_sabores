@@ -1,0 +1,9 @@
+# Ignorar archivos de respaldo y temporales
+*~
+*.swp
+.DS_Store
+Thumbs.db
+*.sh
+# Ignorar archivos y carpetas generados por IDEs
+.idea/
+.vscode/

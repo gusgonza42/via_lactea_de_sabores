@@ -1,0 +1,15 @@
+stages:
+  - docs
+
+pages:
+  image: python:3.8-buster
+  stage: docs
+  script:
+    - pip install -r core/requirements
+    - mkdocs build -f core/mkdocs.yml
+    - cp -r core/public public
+  artifacts:
+    paths:
+      - public
+  only:
+      - main
