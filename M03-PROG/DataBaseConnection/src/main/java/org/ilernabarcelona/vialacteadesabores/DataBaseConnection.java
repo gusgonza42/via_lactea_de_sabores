@@ -1,138 +1,107 @@
 package org.ilernabarcelona.vialacteadesabores;
 
+import org.ilernabarcelona.constantes.Constantes;
 import org.ilernabarcelona.files.FileManager;
-
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DataBaseConnection {
-    public static final String USER = "root";
-    public static final String PASS = "Sabores1234";
-    public static final String SCHEMA = "vialacteadesabores";
-    public static final String BBDD = "jdbc:mysql://localhost:3307/";
-    public static final String PATH="src/main/java/org/ilernabarcelona/files/csv/";
     private Connection conn;
     public ArrayList<Usuario> usuarios;
-    public static final String INSERT_USUARIO = "INSERT INTO USUARIO VALUES(?,?,?,?,?,?,?,?,?)";
     public ArrayList<Chef> chefs;
-    public static final String INSERT_CHEF ="INSERT INTO CHEF VALUES(?,?,?,?)";
     public ArrayList<Camarero> camareros;
-    public static final String INSERT_CAMARERO ="INSERT INTO CAMARERO VALUES(?,?,?,?)";
     public ArrayList<Mesa> mesas;
-    public static final String INSERT_MESA ="INSERT INTO MESA VALUES(?,?,?,?)";
     public ArrayList<Cliente> clientes;
-    public static final String INSERT_CLIENTE ="INSERT INTO CLIENTE VALUES(?,?,?)";
     public ArrayList<Cliente_Mesa> clientes_mesas;
-    public static final String INSERT_CLIENTE_MESA ="INSERT INTO CLIENTE_MESA VALUES(?,?,?)";
     public ArrayList<Comanda> comandas;
-    public static final String INSERT_COMANDA ="INSERT INTO COMANDA VALUES(?,?,?,?)";
     public ArrayList<Menu> menus;
-    public static final String INSERT_MENU="INSERT INTO MENU VALUES(?,?,?,?)";
     public ArrayList<Menu_Comanda> menus_comandas;
-    public static final String INSERT_MENU_COMANDAS="INSERT INTO MENU_COMANDA VALUES(?,?,?)";
     public ArrayList<Plato> platos;
-    public static final String INSERT_PLATO ="INSERT INTO PLATO VALUES(?,?,?,?)";
     public ArrayList<Menu_Plato> menus_platos;
-    public static final String INSERT_MENU_PLATO="INSERT INTO MENU_PLATO VALUES(?,?)";
     public ArrayList<Producto> productos;
-    public static final String INSERT_PRODUCTO ="INSERT INTO PRODUCTO VALUES(?,?,?,?)";
     public ArrayList<Plato_Producto> platos_productos;
-    public static final String INSERT_PLATOS_PRODUCTOS="INSERT INTO PLATO_PRODUCTO VALUES(?,?)";
 
 
     public void init() throws SQLException {
-        //Nos conectamos
-        conn = DriverManager.getConnection(BBDD + SCHEMA, USER, PASS);
+        //Conectamos
+        conectar();
         //Cargamos datos
         cargaDeDatosCSV();
         System.out.println("CARGA DE DATOS COMPLETADA :)!");
-        // DESCONECTAR
-        conn.close();
+        //Desconectamos
     }
+
+
     private void cargaDeDatosCSV() throws SQLException {
-        //Creamos las rutas hacia el csv
-        String rutaDelArchivoCSVUsuario=PATH + "Usuarios.csv";
-        String rutaDelArchivoCSVChef=PATH + "Chefs.csv";
-        String rutaDelArchivoCSVCamarero=PATH + "Camareros.csv";
-        String rutaDelArchivoCSVMesa= PATH + "Mesas.csv";
-        String rutaDelArchivoCSVCliente= PATH +"Clientes.csv";
-        String rutaDelArchivoCSVClienteMesa= PATH +"Clientes_Mesas.csv";
-        String rutaDelArchivoCSVComanda=PATH +"Comandas.csv";
-        String rutaDelArchivoCSVMenu=PATH +"Menus.csv";
-        String rutaDelArchivoCSVMenuComanda=PATH +"Menus_Comandas.csv";
-        String rutaDelArchivoCSVPlato=PATH +"Platos.csv";
-        String rutaDelArchivoCSVMenuPlato =PATH +"Menus_Platos.csv";
-        String rutaDelArchivoCSVProductos =PATH +"Productos.csv";
-        String rutaDelArchivoCSVPlatoProducto =PATH +"Platos_Productos.csv";
         //Instanciamos el fileManager
         FileManager fm = new FileManager();
         //USUARIOS
-        usuarios = fm.cargaUsuariosCSV(rutaDelArchivoCSVUsuario);
+        usuarios = fm.cargaUsuariosCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVUsuario);
         for (Usuario usuario : usuarios) {
             //Añadimos las querys
             insertUsuario(usuario);
         }
         //CHEFS
-        chefs = fm.cargaChefsCSV(rutaDelArchivoCSVChef);
+        chefs = fm.cargaChefsCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVChef);
         for (Chef chef : chefs) {
             //Añadimos las querys
             insertChef(chef);
         }
         //CAMARERO
-        camareros = fm.cargaCamarerosCSV(rutaDelArchivoCSVCamarero);
+        camareros = fm.cargaCamarerosCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVCamarero);
         for (Camarero camarero : camareros) {
             //Añadimos las querys
             insertCamarero(camarero);
         }
         //MESA
-        mesas = fm.cargaMesaCSV(rutaDelArchivoCSVMesa);
+        mesas = fm.cargaMesaCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVMesa);
         for (Mesa mesa : mesas) {
             //Añadimos las querys
             insertMesa(mesa);
         }
         //CLIENTE
-        clientes = fm.cargaClientesCSV(rutaDelArchivoCSVCliente);
+        clientes = fm.cargaClientesCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVCliente);
         for (Cliente cliente : clientes) {
             //Añadimos las querys
             insertCliente(cliente);
         }
         //CLIENTE_MESA
-        clientes_mesas = fm.cargaClientes_MesasCSV(rutaDelArchivoCSVClienteMesa);
+        clientes_mesas = fm.cargaClientes_MesasCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVClienteMesa);
         for (Cliente_Mesa cliente_Mesa : clientes_mesas) {
             insertCliente_Mesa(cliente_Mesa);
         }
         //COMANDA
-        comandas = fm.cargaComandasCSV(rutaDelArchivoCSVComanda);
+        comandas = fm.cargaComandasCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVComanda);
         for (Comanda comanda : comandas) {
             insertComanda(comanda);
         }
         //MENU
-        menus = fm.cargaMenuCSV(rutaDelArchivoCSVMenu);
+        menus = fm.cargaMenuCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVMenu);
         for (Menu menu : menus){
             insertMenu(menu);
         }
         //MENU_COMANDA
-        menus_comandas = fm.cargaMenu_ComandasCSV(rutaDelArchivoCSVMenuComanda);
+        menus_comandas = fm.cargaMenu_ComandasCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVMenuComanda);
         for (Menu_Comanda menu_comanda : menus_comandas){
             insertMenu_Comanda(menu_comanda);
         }
         //PLATO
-        platos = fm.cargaPlatoCSV(rutaDelArchivoCSVPlato);
+        platos = fm.cargaPlatoCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVPlato);
         for (Plato plato : platos){
             insertPlato(plato);
         }
         //MENU_PLATO
-        menus_platos = fm.cargaMenu_Plato(rutaDelArchivoCSVMenuPlato);
+        menus_platos = fm.cargaMenu_Plato(Constantes.PATH+Constantes.rutaDelArchivoCSVMenuPlato);
         for (Menu_Plato menuPlato : menus_platos){
             insertMenu_Plato(menuPlato);
         }
         //PRODUCTO
-        productos = fm.cargaProductosCSV(rutaDelArchivoCSVProductos);
+        productos = fm.cargaProductosCSV(Constantes.PATH+Constantes.rutaDelArchivoCSVProductos);
         for (Producto producto : productos) {
             insertProducto(producto);
         }
         //PLATO PRODUCTO
-        platos_productos = fm.cargaPlato_Producto(rutaDelArchivoCSVPlatoProducto);
+        platos_productos = fm.cargaPlato_Producto(Constantes.PATH+Constantes.rutaDelArchivoCSVPlatoProducto);
         for (Plato_Producto platoProducto : platos_productos){
             insertPlato_Producto(platoProducto);
         }
@@ -141,10 +110,12 @@ public class DataBaseConnection {
     }
 
 
+
+
     // INSERT BBDD
     //USUARIO
     private void insertUsuario(Usuario usuario) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_USUARIO);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_USUARIO);
         ps.setInt(1, usuario.getId_usuario());
         // NOMBRE
         ps.setString(2, usuario.getNombre());
@@ -162,7 +133,7 @@ public class DataBaseConnection {
         ps.setString(8, usuario.getTelefono());
         //CONTRASEÑA
         ps.setString(9,usuario.getContrasena());
-        System.out.println(ps);
+        //System.out.println(ps);
         int result = ps.executeUpdate();
         if (result == 0) {
             System.out.println("ERROR: no hay nada que actualizar");
@@ -170,8 +141,8 @@ public class DataBaseConnection {
 
     }
     //CHEF
-    public void insertChef(Chef chef) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_CHEF);
+    private void insertChef(Chef chef) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_CHEF);
         //ID_USUARIO
         ps.setInt(1,chef.getId_usuario());
         //SALARIO
@@ -180,7 +151,7 @@ public class DataBaseConnection {
         ps.setDate(3,chef.getFechaContratacion());
         //DISPONIBLE
         ps.setBoolean(4,chef.isDisponible());
-        System.out.println(ps);
+        //System.out.println(ps);
         int result = ps.executeUpdate();
         if (result == 0) {
             System.out.println("ERROR: no hay nada que actualizar");
@@ -188,7 +159,7 @@ public class DataBaseConnection {
     }
     //CAMARERO
     private void insertCamarero(Camarero camarero) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_CAMARERO);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_CAMARERO);
         //ID_USUARIO
         ps.setInt(1,camarero.getId_usuario());
         //SALARIO
@@ -197,7 +168,7 @@ public class DataBaseConnection {
         ps.setDate(3,camarero.getFecha_contratacion());
         //DISPONIBLE
         ps.setBoolean(4,camarero.isDisponibilidad());
-        System.out.println(ps);
+        //System.out.println(ps);
         int result = ps.executeUpdate();
         if (result == 0) {
             System.out.println("ERROR: no hay nada que actualizar");
@@ -205,7 +176,7 @@ public class DataBaseConnection {
     }
     //MESA
     private void insertMesa(Mesa mesa) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_MESA);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_MESA);
         //NUM_MESA
         ps.setInt(1,mesa.getMesa());
         //ID_CAMARERO
@@ -214,7 +185,8 @@ public class DataBaseConnection {
         ps.setDate(3,mesa.getFecha_registro());
         //DISPONIBILIDAD
         ps.setBoolean(4,mesa.isDisponibilidad());
-        System.out.println(ps);
+        ps.setInt(5,mesa.getMax_comensales());
+        //System.out.println(ps);
         int result = ps.executeUpdate();
         if (result == 0) {
             System.out.println("ERROR: no hay nada que actualizar");
@@ -223,14 +195,14 @@ public class DataBaseConnection {
     }
     //CLIENTE
     private void insertCliente(Cliente cliente) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_CLIENTE);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_CLIENTE);
         //ID_USUARIO
         ps.setInt(1, cliente.getId_usuario());
         //COMENSALES
         ps.setInt(2, cliente.getComensales());
         //FECHA_ULTIMARESERVA
         ps.setDate(3, cliente.getFecha_ultimaReserva());
-        System.out.println(ps);
+        //System.out.println(ps);
         int result = ps.executeUpdate();
         if (result == 0) {
             System.out.println("ERROR: no hay nada que actualizar");
@@ -238,14 +210,14 @@ public class DataBaseConnection {
     }
      //CLIENTE_MESA
      private void insertCliente_Mesa(Cliente_Mesa clienteMesa) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_CLIENTE_MESA);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_CLIENTE_MESA);
         //ID_USUARIO
          ps.setInt(1,clienteMesa.getId_usuario());
         //NUM_MESA
          ps.setInt(2,clienteMesa.getNum_mesa());
          // FECHA_RESERVA
          ps.setDate(3,clienteMesa.getFecha_reserva());
-         System.out.println(ps);
+         //System.out.println(ps);
          int result = ps.executeUpdate();
          if (result == 0) {
              System.out.println("ERROR: no hay nada que actualizar");
@@ -253,7 +225,7 @@ public class DataBaseConnection {
      }
      //COMANDA
      private void insertComanda(Comanda comanda) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_COMANDA);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_COMANDA);
         //ID_COMANDA
          ps.setInt(1,comanda.getId_comanda());
          //FECHA
@@ -262,7 +234,7 @@ public class DataBaseConnection {
          ps.setBoolean(3,comanda.isPagado());
          //NUM_MESA
          ps.setInt(4,comanda.getNum_mesa());
-         System.out.println(ps);
+         //System.out.println(ps);
          int result = ps.executeUpdate();
          if (result == 0) {
              System.out.println("ERROR: no hay nada que actualizar");
@@ -270,7 +242,7 @@ public class DataBaseConnection {
      }
      //MENU
      private void insertMenu(Menu menu) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_MENU);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_MENU);
          //ID_MENU
          ps.setInt(1,menu.getId_menu());
          //NOMBRE_MENU
@@ -279,7 +251,7 @@ public class DataBaseConnection {
          ps.setString(3,menu.getDescripcion());
          //PRECIO
          ps.setDouble(4,menu.getPrecio());
-         System.out.println(ps);
+         //System.out.println(ps);
          int result = ps.executeUpdate();
          if (result == 0) {
              System.out.println("ERROR: no hay nada que actualizar");
@@ -287,14 +259,14 @@ public class DataBaseConnection {
      }
     //MENU_COMANDA
     private void insertMenu_Comanda(Menu_Comanda menuComanda) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_MENU_COMANDAS);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_MENU_COMANDAS);
         //ID_MENU
         ps.setInt(1,menuComanda.getId_menu());
         //ID_COMANDA
         ps.setInt(2,menuComanda.getId_comanda());
         //ALERGENOS
         ps.setString(3, toString());
-        System.out.println(ps);
+        //System.out.println(ps);
         int result = ps.executeUpdate();
         if (result == 0) {
             System.out.println("ERROR: no hay nada que actualizar");
@@ -302,7 +274,7 @@ public class DataBaseConnection {
     }
     //PLATO
     private void insertPlato(Plato plato) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_PLATO);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_PLATO);
         //ID_PLATO
         ps.setInt(1,plato.getId_plato());
         //NOMBRE_PLATO
@@ -311,7 +283,7 @@ public class DataBaseConnection {
         ps.setString(3,plato.getDescripcion());
         //ID_CHEF
         ps.setInt(4,plato.getId_chef());
-        System.out.println(ps);
+        //System.out.println(ps);
         int result = ps.executeUpdate();
         if (result == 0) {
             System.out.println("ERROR: no hay nada que actualizar");
@@ -319,12 +291,12 @@ public class DataBaseConnection {
     }
     //MENU_PLATO
     private void insertMenu_Plato(Menu_Plato menuPlato) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_MENU_PLATO);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_MENU_PLATO);
         //ID_MENU
         ps.setInt(1,menuPlato.getId_menu());
         //ID_PLATO
         ps.setInt(2,menuPlato.getId_plato());
-        System.out.println(ps);
+        //System.out.println(ps);
         int result = ps.executeUpdate();
         if (result == 0) {
             System.out.println("ERROR: no hay nada que actualizar");
@@ -333,7 +305,7 @@ public class DataBaseConnection {
 
     //PRODUCTO
     private void insertProducto(Producto producto) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_PRODUCTO);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_PRODUCTO);
         //ID_PRODUCTO
         ps.setInt(1,producto.getIdproducto());
         //NOMBRE
@@ -342,7 +314,7 @@ public class DataBaseConnection {
         ps.setInt(3,producto.getStock());
         //PROVEEDOR
         ps.setString(4,producto.getProveedor());
-        System.out.println(ps);
+        //System.out.println(ps);
         int result = ps.executeUpdate();
         if (result == 0) {
             System.out.println("ERROR: no hay nada que actualizar");
@@ -350,16 +322,28 @@ public class DataBaseConnection {
     }
     //PLATO PRODUCTO
     private void insertPlato_Producto(Plato_Producto platoProducto) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(INSERT_PLATOS_PRODUCTOS);
+        PreparedStatement ps = conn.prepareStatement(Constantes.INSERT_PLATOS_PRODUCTOS);
         //ID_PLATO
         ps.setInt(1,platoProducto.getId_plato());
         //ID_PRODUCTO
         ps.setInt(2,platoProducto.getId_producto());
-        System.out.println(ps);
+        //System.out.println(ps);
         int result = ps.executeUpdate();
         if (result == 0) {
             System.out.println("ERROR: no hay nada que actualizar");
         }
+    }
+    //GETTER CONEXION
+    public Connection getConn() {
+        return conn;
+    }
+    //METODOS
+    void conectar() throws SQLException {
+        //Nos conectamos
+        conn = DriverManager.getConnection(Constantes.BBDD + Constantes.SCHEMA, Constantes.USER, Constantes.PASS);
+    }
+    public void desconectar() throws SQLException {
+        conn.close();
     }
 }
 

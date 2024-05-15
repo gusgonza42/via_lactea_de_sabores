@@ -67,7 +67,7 @@ plugins:
       two_columns_level: 3
       output_path: document.pdf
 nav:
-  - Introducción: introduccion.md
+  - Introducción: index.md
   - Sistemas:
       - Docker: sistemas/docker.md
   - BBDD:

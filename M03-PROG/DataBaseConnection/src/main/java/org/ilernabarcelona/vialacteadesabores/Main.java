@@ -1,20 +1,16 @@
 package org.ilernabarcelona.vialacteadesabores;
 
+import org.ilernabarcelona.checkExceptions.CheckError;
+
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, CheckError {
         DataBaseConnection db = new DataBaseConnection();
         db.init();
-        mostrarMenu();
-
-    }
-    public static void mostrarMenu(){
-        System.out.println("|---GESTOR BASE DE DATOS---|");
-        System.out.println("1 HOLA");
-        System.out.println("2 HECTOR");
-        System.out.println("3 COMPRAME");
-        System.out.println("4 UN");
-        System.out.println("0 LIBRO");
+        MenuFunciones menu = new MenuFunciones();
+        menu.menuFunciones(db);
+        // DESCONECTAR
+        db.desconectar();
     }
 }

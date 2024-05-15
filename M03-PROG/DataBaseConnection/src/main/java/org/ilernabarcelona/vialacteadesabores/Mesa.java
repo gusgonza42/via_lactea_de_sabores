@@ -8,15 +8,19 @@ public class Mesa {
     private int id_camarero;
     private Date fecha_registro;
     private boolean disponibilidad;
+    private int max_comensales;
 //CONSTRUCTOR
 
 
-    public Mesa(int mesa, int id_camarero, Date fecha_registro, boolean disponibilidad) {
+    public Mesa(int mesa, int id_camarero, Date fecha_registro, boolean disponibilidad, int max_comensales) {
         setMesa(mesa);
         setId_camarero(id_camarero);
         setFecha_registro(fecha_registro);
         setDisponibilidad(disponibilidad);
+        setMaxcomensales(max_comensales);
     }
+
+
 
     //GETTERS Y SETTERS DE LA CLASE MESA
     public int getMesa() {
@@ -39,6 +43,9 @@ public class Mesa {
         return fecha_registro;
     }
 
+    public int getMax_comensales() {
+        return max_comensales;
+    }
     public void setFecha_registro(Date fecha_registro) {
         this.fecha_registro = fecha_registro;
     }
@@ -48,5 +55,8 @@ public class Mesa {
 
     public void setDisponibilidad(boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
+    }
+    public void setMaxcomensales(int max_comensales) {
+        this.max_comensales = max_comensales;
     }
 }

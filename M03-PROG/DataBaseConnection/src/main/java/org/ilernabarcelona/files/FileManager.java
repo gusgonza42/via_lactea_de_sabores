@@ -1,10 +1,6 @@
 package org.ilernabarcelona.files;
 
 import org.ilernabarcelona.vialacteadesabores.*;
-
-
-
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -106,8 +102,9 @@ public class FileManager {
                 int id_camarero = Integer.parseInt(datos[1]);
                 Date fecha_registro = Date.valueOf(datos[2]);
                 boolean disponibilidad = Boolean.parseBoolean(datos[3]);
+                int max_comensales = Integer.parseInt(datos[4]);
                 // Crea un nuevo objeto Usuario y se añade al array
-                Mesa mesa = new Mesa(num_mesa, id_camarero, fecha_registro, disponibilidad);
+                Mesa mesa = new Mesa(num_mesa, id_camarero, fecha_registro, disponibilidad, max_comensales);
                 mesas.add(mesa);
             }
         } catch (IOException e) {
