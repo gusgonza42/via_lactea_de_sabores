@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+<template>
+	<div class="registro-container">
+	<h2>Registrate</h2>
+		<form @submit.prevent="register" class="registro-form">
+			<div class="form-group">
+				<label for="nombre">Nombre:</label>
+				<input type="text" id="nombre" v-model="nombre" required>
+			</div>
+			<div class="form-group">
+				<label for="apellido1">Primer Apellido:</label>
+				<input type="text" id="apellido1" v-model="apellido1" required>
+			</div>
+			<div class="form-group">
+				<label for="apellido2">Segundo Apellido:</label>
+				<input type="text" id="apellido2" v-model="apellido2" required>
+			</div>
+			<div class="form-group">
+				<label for="fechaNacimiento">Fecha de Nacimiento:</label>
+				<input type="date" id="fechaNacimiento" v-model="fechaNacimiento" required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" id="email" v-model="email" required>
+			</div>
+			<div class="form-group">
+				<label for="telefono">Teléfono:</label>
+				<input type="tel" id="telefono" v-model="telefono" required>
+			</div>
+			<div class="form-group">
+				<label for="contrasena">Contraseña:</label>
+				<input type="password" id="contrasena" v-model="contrasena" required>
+			</div>
+			<button type="submit" class="registro-button">Registrarse</button>
+		</form>
+	</div>
+</template>
+
+<script>
+export default {
+ name: 'RegistroView',
+  data() {
+			return {
+				nombre: '',
+				apellido1: '',
+				apellido2: '',
+				fechaNacimiento: '',
+				email: '',
+				telefono: '',
+				contrasena: ''
+			};
+		},
+		methods: {
+			async register() {
+				try {
+					const response = await fetch('http://localhost:8081/api/register', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							nombre: this.nombre,
+							apellido1: this.apellido1,
+							apellido2: this.apellido2,
+							fechaNacimiento: this.fechaNacimiento,
+							email: this.email,
+							telefono: this.telefono,
+							contrasena: this.contrasena
+						})
+					});
+
+					if (response.ok) {
+						alert('Registro exitoso! ENTRANDO');
+						this.$router.push('/home');
+					} else {
+						console.error('Error en el registro:', response.statusText);
+						alert('Registro fallido. Por favor, verifica tus datos.');
+					}
+				} catch (error) {
+					console.error('Error en la solicitud HTTP:', error);
+					alert('Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde.');
+				}
+			}
+		}
+	};
+</script>
+
+<style scoped>
+	@import "../assets/css/registro.css";
+	/* Estilos específicos del componente Registro */
+</style>
+  

@@ -1,0 +1,17 @@
+#pip packages to install
+
+# Install mkdocs
+#mkdocs
+
+# Add custom theme Material
+# (https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes)
+mkdocs-material==9.4.6
+
+# List of plugins to install
+mkdocs-git-authors-plugin
+mkdocs-git-revision-date-localized-plugin
+mkdocs-video
+
+# PDF download
+weasyprint==52.5
+mkdocs-with-pdf

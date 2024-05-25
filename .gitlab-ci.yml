@@ -1,0 +1,22 @@
+stages:
+  - docs
+
+pages:
+  image: python:3.8-buster
+  stage: docs
+  script:
+    - pip install -r core/requirements
+    - pip install --upgrade pip
+    - pip install mkdocs-bootstrap  # instalar mkdocs-bootstrap
+    - pip install mkdocs-cinder  # instalar mkdocs-cinder
+    - pip install mkdocs-windmill  # instalar mkdocs-windmill
+    - pip install mkdocs-material-extensions  # instalar mkdocs-material-extensions
+    - pip install mkdocs-material  # instalar mkdocs-material
+    - pip install mkdocs-video  # instalar mkdocs-video
+    - mkdocs build -f core/mkdocs.yml
+    - cp -r core/public public
+  artifacts:
+    paths:
+      - public
+  only:
+      - main
