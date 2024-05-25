@@ -1,42 +1,35 @@
-# G5 Vía Láctea De Sabores
+# VIA LACTEA DE SABORES PROJECT
 
-## Sprint 1: Diseño Inicial 🚀
+## Primer paso: Init project
 
-En este primer sprint, nos enfocamos en establecer las bases sólidas para nuestro proyecto "Vía Láctea de Sabores".
+1. Abre el proyecto en Visual Studio Code (VSC). Asegúrate de tener instalados los plugins de Docker y Vue.js.
+2. También necesitas tener IntelliJ IDEA y MySQL Workbench instalados, o simplemente IntelliJ IDEA Ultimate.
 
-### M01: Configuración del Contenedor MySQL
+## Segundo paso: Iniciar la BBDD con el contenedor de Docker
 
-Implementamos con éxito un contenedor funcional de MySQL en el puerto 3306, superando desafíos iniciales de configuración.
+1. Para iniciar el contenedor, ejecuta el archivo `docker-compose.yml` ubicado en `M01-SISTEMAS/docker`.
+2. Haz clic derecho en `docker-compose.yml` y selecciona la opción `docker compose up`.
 
-### M02: Diseño de la Base de Datos
+## Tercer paso: Abrir el proyecto de Java en IntelliJ
 
-Finalizamos los Diagramas Entidad-Relación y Relacional, además de generar los scripts necesarios para la base de datos.
+1. Abre IntelliJ IDEA.
+2. Selecciona y abre la carpeta del proyecto que se encuentra en `M03-PROG/vialacteadesabores_backend`.
 
-### M05: Elaboración de Casos de Uso y Diagrama de Clases
+## Cuarto Paso: Cargar datos a la BBDD del contenedor de MySQL desde IntelliJ
 
-Generamos casos de uso basados en las funcionalidades del proyecto y comenzamos a desarrollar el diagrama de clases, estableciendo una base sólida para el desarrollo futuro.
+1. Ejecuta el archivo `Main.java` ubicado en `src/main/abp/project/mesapp/util`.
+2. Es normal que aparezca un mensaje de error indicando `duplicate key row 1` si ejecutas el main más de una vez.
 
----
+## Quinto Paso: Encender el APIREST para activar el backend
 
-## Sprint 2: Persistencia 👽
+1. En la misma ruta `src/main/abp/project/mesapp`, ejecuta el archivo `MesappApplication.java`.
+2. Verás en la terminal que el APIREST se ha activado.
 
-En este segundo sprint, nos centraremos en establecer la persistencia de datos y mejorar la documentación del proyecto.
+## Sexto Paso: Activar el frontend de Vue
 
-### M05: Agregar MkDocs para la Documentación del Proyecto
-- Configurar y agregar MkDocs al repositorio Git para documentar el proyecto.
-- Habilitar la visualización de la documentación con Pages en Git.
+1. Asegúrate de tener instalado Node.js desde [nodejs.org](https://nodejs.org/).
+2. Abre la terminal y navega a la carpeta `M04-LENGUAJES/via-lactea-fronted/`.
+3. Ejecuta el comando `npm run serve`.
+4. Se proporcionará un enlace al localhost donde podrás ver el frontend en funcionamiento.
 
-### M02: Planteamiento de las Consultas
-- Planificar y diseñar las consultas necesarias para las funcionalidades del programa.
-- Implementar las funciones requeridas para ejecutar las consultas diseñadas.
-
-### M03: Carga de Archivo CSV
-- Realizar la carga de archivos CSV con los datos de las tablas de la base de datos.
-- Realizar la estructura de clases con atributos, constructores, getters y setters.
-- Implementar una clase de conexión a la base de datos.
-- Incorporar las consultas y llamadas a la base de datos en constantes.
-- Desarrollar funcionalidades para recopilar y mostrar por consola los datos de la base de datos en colecciones según los requisitos especificados (ordenadas, sin repetición, etc.).
-
-
----
-
+YOW
