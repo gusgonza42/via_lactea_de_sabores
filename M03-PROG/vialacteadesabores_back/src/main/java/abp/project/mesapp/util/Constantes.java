@@ -24,7 +24,6 @@ public class Constantes {
     public static final String rutaDelArchivoCSVPlatoProducto = "Platos_Productos.csv";
     //INSERTS AUTOMÁTICOS
     public static final String INSERT_USUARIO = "INSERT INTO USUARIO  VALUES(?,?,?,?,?,?,?,?,?)";
-    public static final String INSERT_NEW_USUARI0 = "INSERT INTO USUARIO (nombre, apellido1, apellido2, fecha_nacimiento, email, fecha_registro, telefono, contrasena) VALUES(?,?,?,?,?,?,?,?)";
     public static final String INSERT_CHEF = "INSERT INTO CHEF VALUES(?,?,?,?)";
     public static final String INSERT_CAMARERO = "INSERT INTO CAMARERO VALUES(?,?,?,?)";
     public static final String INSERT_MESA = "INSERT INTO MESA VALUES(?,?,?,?)";
@@ -40,7 +39,7 @@ public class Constantes {
     //SELECTS FUNCIONES Y PROCEDIMIENTOS JAVA
     //SELECTS EXCLUSIVOS JAVA
     public static final String SELECT_USUARIO = "SELECT email,contrasena FROM USUARIO where email=? and contrasena =?";
-    public static final String SELEC_USER_MAIL = "SELECT id FROM usuarios WHERE email = ?";
+    public static final String SELECT_PERFIL_MAIL = "SELECT * FROM usuarios WHERE email = ?";
     //CORREGIR LISTAR MESAS
     public static final String LISTAR_MESAS = "SELECT m.num_mesa, m.disponibilidad, COUNT(cm.id_usuario) AS num_comensales\n" + "FROM MESA m\n" + "LEFT JOIN CLIENTE_MESA cm  m.num_mesa = cm.num_mesa\n" + "GROUP BY m.num_mesa\n" + "ORDER BY m.num_mesa";
     public static final String LISTAR_COMANDAS = "SELECT id_comanda,fecha,pagado,num_mesa FROM COMANDA WHERE fecha = ? ORDER BY fecha";
@@ -59,6 +58,8 @@ public class Constantes {
     public static final String ASIGNAR_MESA_LIBRE = "SELECT num_mesa FROM mesas WHERE disponibilidad = 1 AND capacidad >= ? LIMIT 1";
     public static final String LISTAR_CAMAREROS_MESAS = "SELECT c.nombre, c.apellidos, m.num_mesa FROM camarero c LEFT JOIN cliente_mesa cm ON c.id_usuario = cm.id_usuario LEFT JOIN mesa m ON cm.num_mesa = m.num_mesa";
     //INSERT DE REGISTRAR USER
-    public static final String USER_EXISTS = "SELECT * FROM usuario WHERE email = ?";
+    public static final String USER_EXISTS = "SELECT * FROM USUARIO WHERE email = ?";
+    public static final String INSERT_NEW_USUARI0 = "INSERT INTO USUARIO (nombre, apellido1, apellido2, fecha_nacimiento, email, fecha_registro, telefono, contrasena) VALUES(?,?,?,?,?,?,?,?)";
+
 
 }

@@ -1,0 +1,10 @@
+.profile-container {
+	background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0');
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+.content{
+	margin-top: 80px;
+}

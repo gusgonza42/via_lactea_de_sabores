@@ -4,14 +4,13 @@ import abp.project.mesapp.model.*;
 import abp.project.mesapp.util.CheckError;
 import abp.project.mesapp.util.Constantes;
 import abp.project.mesapp.data.FileManager;
-import lombok.Getter;
+
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DataBaseConnection {
-    //GETTER CONEXION
-    @Getter
+    //GETTER CONEXIO
     private static Connection conn;
     public ArrayList<Usuario> usuarios;
     public ArrayList<Chef> chefs;
@@ -357,5 +356,6 @@ public class DataBaseConnection {
     public void desconectar() throws SQLException {
         conn.close();
     }
+
 }
 

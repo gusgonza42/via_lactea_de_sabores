@@ -6,6 +6,7 @@ import java.sql.Date;
 
 public class Usuario {
     // Atributos clase USUARIOS
+    // Atributos clase USUARIOS
     private int id_usuario;
     private String nombre;
     private String apellido1;
@@ -14,10 +15,8 @@ public class Usuario {
     private String email;
     private Date fecha_registro;
 
-
     private String telefono;
     private String contrasena;
-// CONSTRUCTOR CLASE USUARIO
 
     public Usuario(int id_usuario, String nombre, String apellido1, String apellido2, Date fecha_nacimiento,
             String email, Date fecha_registro, String telefono,String contrasena) {
@@ -132,14 +131,14 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" +
-                "id_usuario=" + id_usuario +
-                ", nombre='" + nombre + '\'' +
-                ", apellido1='" + apellido1 + '\'' +
-                ", apellido2='" + apellido2 + '\'' +
-                ", fecha_nacimiento=" + fecha_nacimiento +
-                ", email='" + email + '\'' +
-                ", fecha_registro=" + fecha_registro +
-                ", telefono='" + telefono + '\'' +
+                "id_usuario=" + getId_usuario() +
+                ", nombre='" + getNombre() + '\'' +
+                ", apellido1='" + getApellido1() + '\'' +
+                ", apellido2='" + getApellido2() + '\'' +
+                ", fecha_nacimiento=" + getFecha_nacimiento() +
+                ", email='" + getEmail() + '\'' +
+                ", fecha_registro=" + getFecha_registro() +
+                ", telefono='" + getTelefono() + '\'' +
                 '}';
     }
 }

@@ -8,6 +8,7 @@ import SalaView from './components/SalaView.vue';
 import ReservaView from './components/ReservaView.vue';
 import AboutView from './components/AboutView.vue';
 import AdminModeView from './components/AdminModeView.vue';
+import PerfilView from './components/PerfilView.vue';
 
 const routes = [
   { path: '/', component: LoginView },
@@ -17,7 +18,8 @@ const routes = [
   { path: '/sala', component: SalaView },
   { path: '/reserva', component: ReservaView },
   { path: '/about', component: AboutView },
-  { path: '/admin', component: AdminModeView }
+  { path: '/admin', component: AdminModeView },
+  { path: '/perfil', component: PerfilView }
 ];
 
 const router = createRouter({

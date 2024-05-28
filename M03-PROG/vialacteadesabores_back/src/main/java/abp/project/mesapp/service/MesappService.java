@@ -1,11 +1,16 @@
 package abp.project.mesapp.service;
 
+import abp.project.mesapp.dao.UsuarioDao;
 import abp.project.mesapp.model.*;
+import abp.project.mesapp.util.CheckError;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MesappService {
+    @Autowired
+    private UsuarioDao usuarioDao;
 
     public ResponseEntity getMesapp(int option) {
         try {
@@ -16,6 +21,18 @@ public class MesappService {
         } catch (Exception e) {
             //Retornamos el error generado por la excepción Personalizada
             return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+    public ResponseEntity<Usuario> getPerfil(String email) {
+        try {
+            Usuario usuario = usuarioDao.findByEmail(email);
+            if (usuario != null) {
+                return ResponseEntity.ok(usuario);
+            } else {
+                return ResponseEntity.notFound().build(); // Usuario no encontrado
+            }
+        } catch (CheckError e) {
+            return ResponseEntity.badRequest().body(null); // Error al buscar el usuario
         }
     }
 

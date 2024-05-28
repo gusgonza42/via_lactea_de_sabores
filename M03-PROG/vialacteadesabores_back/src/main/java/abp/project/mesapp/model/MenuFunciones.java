@@ -12,8 +12,8 @@ public class MenuFunciones {
 
 
     public void menuFunciones(DataBaseConnection db) throws SQLException {
-        conn=db.getConn();
-        db.conectar();
+        //conn = db.getConnection();
+        //db.conectar();
 
         Scanner sc = new Scanner(System.in);
         int opcion;

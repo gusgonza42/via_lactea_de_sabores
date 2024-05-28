@@ -6,11 +6,14 @@ import abp.project.mesapp.model.*;
 import abp.project.mesapp.service.MesappService;
 import abp.project.mesapp.database.DataBaseConnection;
 import abp.project.mesapp.util.CheckError;
+import org.apache.tomcat.util.json.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 @RestController
 @RequestMapping("/api")
@@ -21,7 +24,6 @@ public class MesappController {
 
     @Autowired
     public UsuarioDao usuarioDao;
-
 
     public MesaDao mesaDao;
 
@@ -39,7 +41,7 @@ public class MesappController {
     }*/
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody Usuario user) {
+    public ResponseEntity<?> login(@RequestBody Usuario user) {
         System.out.println("Datos del cliente");
         System.out.println("Email: " + user.getEmail());
         System.out.println("Contraseña: " + user.getContrasena());
@@ -72,7 +74,8 @@ public class MesappController {
             if (loggedIn)
                 return ResponseEntity.ok().build();
             else
-                return ResponseEntity.badRequest().body("Error de registro");
+                return ResponseEntity.badRequest().body("El correo electrónico ya está registrado.");
+
         } catch (CheckError e) {
             throw new CheckError(CheckError.ERROR_USER);
         }
@@ -83,7 +86,10 @@ public class MesappController {
         return mesappService.getMesapp(option);
     }
 
-
+    @GetMapping("/perfil")
+    public ResponseEntity<Usuario> getPerfil(@RequestParam String email) {
+        return mesappService.getPerfil(email);
+    }
 
     /*
      * TODO:

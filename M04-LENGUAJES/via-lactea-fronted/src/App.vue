@@ -2,9 +2,7 @@
   <div id="app">
     <router-view/>
   </div>
-  <footer>
-      <p>© 2024 La Vía Lactea de Sabores Todos los derechos reservados</p>
-  </footer>
+ 
 </template>
 
 <script>

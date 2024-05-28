@@ -9,14 +9,14 @@
         <h2>Login</h2>
         <form @submit.prevent="login" class="login-form">
           <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" id="email" v-model="email" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" v-model="email" required>
           </div>
           <div class="form-group">
-            <label for="password">Password:</label>
+            <label for="contrasena">Contraseña:</label>
             <input type="password" id="contrasena" v-model="contrasena" required>
           </div>
-          <button type="submit" class="login-button">Login</button>
+          <button type="submit" class="login-button">Iniciar sesión</button>
           <div class="text-center">
             <p>¿No tienes una cuenta? <router-link to="/registro">Registrarse</router-link></p>
           </div>

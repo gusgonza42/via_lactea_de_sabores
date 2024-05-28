@@ -1,66 +1,59 @@
-/* Estilos específicos del componente de navegación */
-.navigation-links {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-  }
-  
-  .nav-link {
-    text-decoration: none;
-    color: #333;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .nav-link:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .logout {
-    color: red;
-  }
-  
-  .logout:hover {
-    background-color: #ffcccc;
-  }
-
-.navigation-links {
-	display: flex;
-	justify-content: space-around;
-	padding: 10px;
-	background-color: #1a6cbe;
-
+.main-content {
+  background-color: white; /* Cambia el fondo a blanco */
+  padding: 20px;
+  margin-top: 70px; /* Ajuste para el navbar fijo */
 }
 
-ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-
+.main-content h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.nav-link {
-	text-decoration: none;
-	color: #ecf0f1;
-	padding: 10px 20px;
-	border: 1px solid #edf0f1;
-	border-radius: 5px;
-	transition: background-color 0.3s ease, color 0.3s ease;
+.main-content p {
+  text-align: center;
+  color: #555;
 }
 
-.nav-link:hover {
-	background-color: #113685;
-	color: #ffffff;
+.home-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.logout {
-	color: #000000;
-	border-color: #000000;
+.section {
+  background: #fcfcfc;
+  padding: 20px; /* Ajusta el padding para mayor comodidad */
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.logout:hover {
-	background-color: #e74c3c;
-	color: #ecf0f1;
+.section h3 {
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.section p, .section ul {
+  color: #555;
+}
+
+.section ul {
+  padding-left: 20px;
+}
+
+.section ul li {
+  list-style-type: disc;
+  margin-bottom: 5px;
+}
+.main-content {
+  min-height: calc(100vh - 70px); 
+}
+footer {
+  background-color: #1b1b1b;
+  padding: 10px;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }

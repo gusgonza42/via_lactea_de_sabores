@@ -1,9 +1,9 @@
 .navigation-links {
 	display: flex;
+	list-style: none;
+	padding: 0;
+	background-color: #12a059;
 	justify-content: space-around;
-	padding: 10px;
-	background-color: #1a6cbe;
-
 }
 
 ul {
@@ -17,13 +17,12 @@ ul {
 	text-decoration: none;
 	color: #ecf0f1;
 	padding: 10px 20px;
-	border: 1px solid #edf0f1;
 	border-radius: 5px;
 	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-link:hover {
-	background-color: #113685;
+	background-color: #1c771c;
 	color: #ffffff;
 }
 
