@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary container-fluid p-2">
+      <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary container-fluid p-2 " >
         <div>
           <a class="navbar-brand" href="#"><img width="50px" height="50px" src="../assets/img/logo_via_lactea.png" alt="logo"></a>
         </div>
@@ -39,9 +39,9 @@
       </nav>
     </header>
 
-    <div class="main-content">
-      <h2>Home</h2>
-      <p>Bienvenido a la página de inicio. ¡Has iniciado sesión correctamente!</p>
+    <div class="main-content bg-dark">
+      <h2 class="text-white">Home</h2>
+      <p class="text-white">Bienvenido a la página de inicio. ¡Has iniciado sesión correctamente!</p>
 
       <div class="home-content">
         <div class="section">
@@ -51,19 +51,11 @@
         <div class="section">
           <h3>Menú Destacado</h3>
           <p>Descubre nuestros platos más populares y las especialidades del chef.</p>
-          <ul>
-            <li>Plato 1</li>
-            <li>Plato 2</li>
-            <li>Plato 3</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Reservaciones</h3>
-          <p>Haz tu reservación en línea y asegura tu mesa en nuestro restaurante.</p>
-        </div>
-        <div class="section">
-          <h3>Contacto</h3>
-          <p>Para más información, contáctanos a través de nuestro número de teléfono o redes sociales.</p>
+            <ul class="list-group">
+              <li class="list-group-item">Agujero Negro</li>
+              <li class="list-group-item">Supernova</li>
+              <li class="list-group-item">Galaxia Espiral</li>
+            </ul>
         </div>
       </div>
     </div>

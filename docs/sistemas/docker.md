@@ -40,3 +40,4 @@
 2. **Acceder a MySQL desde fuera del contenedor:**
 
    Una vez que el contenedor esté en funcionamiento, puedes acceder a MySQL desde fuera del contenedor utilizando el host y el puerto 3306. Puedes usar 'localhost' o '127.0.0.1' como nombre del host y la contraseña de root.
+

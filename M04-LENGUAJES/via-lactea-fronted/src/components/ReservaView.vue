@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary container-fluid p-2">
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary container-fluid p-2 black-background">
       <div>
         <a class="navbar-brand" href="#"><img width="50px" height="50px" src="../assets/img/logo_via_lactea.png"
             alt="logo"></a>
@@ -98,5 +98,7 @@ export default {
 
 <style scoped>
 @import "../assets/css/reserva.css";
-
+.black-background {
+  background-color: #000000; 
+}
 </style>

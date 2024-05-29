@@ -27,14 +27,18 @@ public class DataBaseConnection {
     public ArrayList<Plato_Producto> platos_productos;
 
 
-    public void init() throws SQLException {
-        //Conectamos
-        conectar();
-        //Cargamos datos
-        cargaDeDatosCSV();
-        System.out.println("CARGA DE DATOS COMPLETADA :)!");
-        //Desconectamos
-        desconectar();
+    public void init() throws CheckError {
+        try {
+            //Conectamos
+            conectar();
+            //Cargamos datos
+            cargaDeDatosCSV();
+            System.out.println("CARGA DE DATOS COMPLETADA :)!");
+            //Desconectamos
+            desconectar();
+        }catch (SQLException e) {
+            throw new CheckError(CheckError.ERROR_CONNECT_BBDD);
+        }
     }
 
     public static Connection getConnection()throws CheckError {

@@ -1,5 +1,4 @@
 <template>
-  <div class="section">
     <video autoplay muted loop class="video-background">
       <source src="../assets/video/space_back.mp4" type="video/mp4">
       Tu navegador no soporta el elemento de video.
@@ -23,7 +22,6 @@
         </form>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

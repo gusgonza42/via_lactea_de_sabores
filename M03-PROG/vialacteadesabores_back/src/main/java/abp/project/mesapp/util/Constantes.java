@@ -6,6 +6,7 @@ public class Constantes {
     public static final String PASS = "Sabores1234";
     public static final String SCHEMA = "vialacteadesabores";
     public static final String BBDD = "jdbc:mysql://localhost:3307/";
+    public static final String uri = "mongodb://root:root@localhost:27017";
     //RUTAS DE ARCHIVO
     public static final String PATH = "src/main/java/abp/project/mesapp/data/";
     //RUTAS DE ARCHIVO ESPECÍFICO

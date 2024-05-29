@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: gusgonza/mymongo
+    container_name: mymongo
+    ports:
+      - "27017:27017"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+      ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo:27017/
+      ME_CONFIG_BASICAUTH: "false"
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+
+volumes:
+  mongo_data:

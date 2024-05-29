@@ -39,6 +39,23 @@
       </div>
     </nav>
   </header>
+  <div class="container mt-5">
+      <h2 class="text-center">MENU</h2>
+      <div class="row mt-3">
+        <div class="col-md-4">
+          <h3 class="text-center">Menú Degustación</h3>
+          <p class="text-center">Disfruta de una selección de platos exquisitos y sorprendentes.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="text-center">Menú a la Carta</h3>
+          <p class="text-center">Elige tus platos favoritos y crea tu propia experiencia gastronómica.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="text-center">Menú del Día</h3>
+          <p class="text-center">Descubre nuestras propuestas diarias con los mejores ingredientes frescos.</p>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>

@@ -6,12 +6,14 @@ public class Producto {
     private int stock;
     private String proveedor;
 
+
     public Producto(int id_producto, String nombre, int stock, String proveedor) {
         setIdproducto(id_producto);
         setNombre(nombre);
         setStock(stock);
         setProveedor(proveedor);
     }
+
 
     public int getIdproducto() {
         return id_producto;
