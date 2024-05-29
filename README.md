@@ -2,7 +2,7 @@
 
 ## Primer paso: Init project
 
-1. Abre el proyecto en Visual Studio Code (VSC). Asegúrate de tener instalados los plugins de Docker y Vue.js.
+1. Abre el proyecto en Visual Studio Code (VSC). Asegúrate de tener instalados los plugins de Docker [docker](https://www.docker.com/products/docker-desktop/) y Vue.js.
 2. También necesitas tener IntelliJ IDEA y MySQL Workbench instalados, o simplemente IntelliJ IDEA Ultimate.
 
 ## Segundo paso: Iniciar la BBDD con el contenedor de Docker
