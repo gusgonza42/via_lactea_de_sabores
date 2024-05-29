@@ -29,7 +29,7 @@
 
 1. Asegúrate de tener instalado Node.js desde [nodejs.org](https://nodejs.org/).
 2. Abre la terminal y navega a la carpeta `M04-LENGUAJES/via-lactea-fronted/`.
-3. Ejecuta el comando ```npm install -g @vue/cli``` y ```npm run serve```.
+3. Ejecuta el comando ```shell npm install -g @vue/cli``` y ```shell npm run serve```.
 4. Se proporcionará un enlace al localhost donde podrás ver el frontend en funcionamiento.
 
 YOW
