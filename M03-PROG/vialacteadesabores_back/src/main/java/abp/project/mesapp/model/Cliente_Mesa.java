@@ -16,6 +16,9 @@ public class Cliente_Mesa {
         setFecha_reserva(fecha_reserva);
     }
 
+    public Cliente_Mesa() {
+    }
+
 //GETTERS Y SETTERS
 
     public int getId_usuario() {

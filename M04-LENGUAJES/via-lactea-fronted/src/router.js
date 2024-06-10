@@ -9,6 +9,7 @@ import ReservaView from './components/ReservaView.vue';
 import AboutView from './components/AboutView.vue';
 import AdminModeView from './components/AdminModeView.vue';
 import PerfilView from './components/PerfilView.vue';
+import MongoView from './components/MongoView.vue';
 
 const routes = [
   { path: '/', component: LoginView },
@@ -19,7 +20,8 @@ const routes = [
   { path: '/reserva', component: ReservaView },
   { path: '/about', component: AboutView },
   { path: '/admin', component: AdminModeView },
-  { path: '/perfil', component: PerfilView }
+  { path: '/perfil', component: PerfilView },
+  { path: '/mongo' , component: MongoView }
 ];
 
 const router = createRouter({

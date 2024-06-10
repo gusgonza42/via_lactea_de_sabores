@@ -1,83 +1,42 @@
 <template>
-	<header>
-		<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary container-fluid p-2">
-			<div>
-				<a class="navbar-brand" href="#"><img width="50px" height="50px" src="../assets/img/logo_via_lactea.png"
-						alt="logo"></a>
-			</div>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="collapsibleNavbar">
-				<ul class="navbar-nav me-auto">
-
-					<li class="nav-item">
-						<router-link to="/home" class="nav-link">Home</router-link>
-					</li>
-					<li class="nav-item">
-						<router-link to="/menu" class="nav-link">Menu</router-link>
-					</li>
-					<li class="nav-item">
-						<router-link to="/sala" class="nav-link">Sala</router-link>
-					</li>
-					<li class="nav-item">
-						<router-link to="/reserva" class="nav-link">Reserva</router-link>
-					</li>
-					<li class="nav-item">
-						<router-link to="/about" class="nav-link">About</router-link>
-					</li>
-					<li class="nav-item">
-						<router-link to="/admin" class="nav-link">AdminMode</router-link>
-					</li>
-					<li class="nav-item">
-						<router-link to="/perfil" class="nav-link">Perfil</router-link>
-					</li>
-					<li class="nav-item">
-						<router-link to="/" class="nav-link">Logout</router-link>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</header>
-
-	<body class="content">
-      <h2 class="text-center">Perfil</h2>
-      <div class="profile-container" v-if="!loading">
-          <p v-if="usuario == null">No hay usuario</p>
-          <div v-else>
-            <h1>Nombre: {{ usuario.nombre }}</h1>
-            <h2>Apellido: {{ usuario.apellido1 }}</h2>
-			<h2>Apellido: {{ usuario.apellido2 }}</h2>
-			<h2>Fecha de nacimiento: {{ usuario.fechaNacimiento }}</h2>
-            <h3>Correo: {{ usuario.email }}</h3>
-            <h4>Contraseña: {{ usuario.contrasena }}</h4>
-          </div>
+  <!-- ... -->
+  <div class="content">
+    <!-- ... -->
+    <div v-if="!loadingReservations">
+      <h2>Reservas:</h2>
+      <div v-if="reservations.length > 0">
+        <div v-for="(reservation, index) in reservations" :key="index">
+          <h3>Reserva {{ index + 1 }}</h3>
+          <p>Fecha: {{ reservation.fecha }}</p>
+          <p>Hora: {{ reservation.hora }}</p>
+          <!-- ... otros datos de la reserva ... -->
         </div>
-        <div v-else>
-          <p>Cargando...</p>
-        </div>
-    </body>
-    <footer>
-      <p>© 2024 La Vía Lactea de Sabores Todos los derechos reservados</p>
-  </footer>
+      </div>
+      <div v-else>
+        <p>No hay reservas disponibles.</p>
+      </div>
+    </div>
+    <div v-else>
+      <p>Cargando reservas...</p>
+    </div>
+  </div>
+  <!-- ... -->
 </template>
 
 <script>
 export default {
-  name: 'PerfilView',
-  mounted() {
-	this.user();
-  },
+  // ...
   data() {
     return {
-    usuario: [],
-	loading: true
+      reservations: [],
+      loadingReservations: true,
     };
   },
   methods: {
-    async user() {
+    async fetchReservations() {
       try {
-        const response = await fetch('http://localhost:8081/api/perfil', {
+        const idCliente = this.data.idCliente; // obtener el id del cliente del objeto de datos
+        const response = await fetch(`http://localhost:8081/api/perfil/${idCliente}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -85,22 +44,24 @@ export default {
         });
         if (response.ok) {
           const data = await response.json();
-          this.usuario = data;
-          this.loading = false;
+          this.reservations = data;
+          this.loadingReservations = false;
         } else {
           console.error('Error en la llamada a la API:', response.statusText);
-          alert('Ha ocurrido un error.');
+          alert('Ha ocurrido un error al obtener las reservas.');
         }
       } catch (error) {
-        console.error('Error al autenticar al usuario:', error);
-        alert('No hay usuario.');
+        console.error('Error al obtener las reservas:', error);
+        alert('No se pudieron obtener las reservas.');
       }
     }
-  }
+  },
+  mounted() {
+    this.user();
+    this.fetchReservations();
+  },
 };
 </script>
-
-
 
 <style scoped>
 @import "../assets/css/perfil.css";

@@ -14,7 +14,6 @@ public class Usuario {
     private Date fecha_nacimiento;
     private String email;
     private Date fecha_registro;
-
     private String telefono;
     private String contrasena;
 

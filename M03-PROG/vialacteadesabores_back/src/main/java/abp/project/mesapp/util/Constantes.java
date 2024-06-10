@@ -6,7 +6,7 @@ public class Constantes {
     public static final String PASS = "Sabores1234";
     public static final String SCHEMA = "vialacteadesabores";
     public static final String BBDD = "jdbc:mysql://localhost:3307/";
-    public static final String uri = "mongodb://root:root@localhost:27017";
+    public static final String uri = "mongodb://localhost:27017/";
     //RUTAS DE ARCHIVO
     public static final String PATH = "src/main/java/abp/project/mesapp/data/";
     //RUTAS DE ARCHIVO ESPECÍFICO
@@ -27,7 +27,7 @@ public class Constantes {
     public static final String INSERT_USUARIO = "INSERT INTO USUARIO  VALUES(?,?,?,?,?,?,?,?,?)";
     public static final String INSERT_CHEF = "INSERT INTO CHEF VALUES(?,?,?,?)";
     public static final String INSERT_CAMARERO = "INSERT INTO CAMARERO VALUES(?,?,?,?)";
-    public static final String INSERT_MESA = "INSERT INTO MESA VALUES(?,?,?,?)";
+    public static final String INSERT_MESA = "INSERT INTO MESA VALUES(?,?,?,?,?)";
     public static final String INSERT_CLIENTE = "INSERT INTO CLIENTE VALUES(?,?,?)";
     public static final String INSERT_CLIENTE_MESA = "INSERT INTO CLIENTE_MESA VALUES(?,?,?)";
     public static final String INSERT_COMANDA = "INSERT INTO COMANDA VALUES(?,?,?,?)";
@@ -50,17 +50,30 @@ public class Constantes {
     public static final String MOSTRAR_ALERGENOS = "SELECT DISTINCT alergenos FROM MENU_COMANDA";
     public static final String MOSTRAR_INGREDIENTESYSTOCK = "SELECT nombre, stock FROM PRODUCTO";
     public static final String CAMBIO_DISPONIBILIDAD = "UPDATE MESA SET disponibilidad = NOT disponibilidad WHERE num_mesa = ?";
-
-    //test
-    public static final String LOGIN_QUERY = "SELECT * FROM USUARIO WHERE USUARIO = ? AND CONTRASENA = ?";
     //CONSTANTES DE MENSAJES de busqueda PARA AÑADIR NUEVO USER Y Nº DE COMPENSALES
-    public static final String SELECT_COUNT_FROM_USUARIO = "SELECT COUNT(*) FROM usuario WHERE id_usuario = ?";
     public static final String SELECT_COUNT_FROM_MESAS = "SELECT COUNT(*) FROM mesas WHERE capacidad >= ? AND fecha_disponible = ?";
     public static final String ASIGNAR_MESA_LIBRE = "SELECT num_mesa FROM mesas WHERE disponibilidad = 1 AND capacidad >= ? LIMIT 1";
-    public static final String LISTAR_CAMAREROS_MESAS = "SELECT c.nombre, c.apellidos, m.num_mesa FROM camarero c LEFT JOIN cliente_mesa cm ON c.id_usuario = cm.id_usuario LEFT JOIN mesa m ON cm.num_mesa = m.num_mesa";
     //INSERT DE REGISTRAR USER
     public static final String USER_EXISTS = "SELECT * FROM USUARIO WHERE email = ?";
     public static final String INSERT_NEW_USUARI0 = "INSERT INTO USUARIO (nombre, apellido1, apellido2, fecha_nacimiento, email, fecha_registro, telefono, contrasena) VALUES(?,?,?,?,?,?,?,?)";
 
 
+    public static final String DELETE_RESERVA = "DELETE FROM CLIENTE_MESA WHERE id_usuario = ?";
+    public static final String SELECT_RESERVAS_HISTORIAL = "SELECT * FROM CLIENTE_MESA WHERE id_usuario = ?";
+    public static final String VIEW_PLATOS = "SELECT * FROM vista_platos";
+    public static final String DELETE_PLATO = "DELETE FROM PLATO WHERE id_plato = ?";
+    public static final String SELECT_ALL_MESAS = "SELECT * FROM MESA";
+    public static final String SELECT_ALL_COMANDAS = "SELECT * FROM COMANDA";
+    public static final String SELECT_ALL_MESAS_CLIENTES = "SELECT * FROM CLIENTE_MESA";
+    public static final String SELECT_ALL_CLIENTES ="SELECT * FROM CLIENTE";
+    public static final String SELECT_ALL_CAMAREROS = "SELECT * FROM CAMARERO";
+    public static final String SELECT_ALL_CHEFS = "SELECT * FROM CHEF";
+    public static final String SELECT_ALL_USUARIOS = "SELECT * FROM USUARIO";
+    public static final String SELECT_ALL_PLATOS = "SELECT * FROM PLATO";
+    public static final String SELECT_ALL_MENUS = "SELECT * FROM MENU";
+    public static final String SELECT_ALL_PRODUCTOS = "SELECT * FROM PRODUCTO";
+    ;
+    ;
+    ;
+    ;
 }

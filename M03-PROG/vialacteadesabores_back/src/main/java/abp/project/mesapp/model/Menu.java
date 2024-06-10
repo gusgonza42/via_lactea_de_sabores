@@ -15,6 +15,8 @@ public class Menu {
         setDescripcion(descripcion);
         setPrecio(precio);
     }
+    public Menu() {
+    }
 
 
     //GETTERS Y SETTERS

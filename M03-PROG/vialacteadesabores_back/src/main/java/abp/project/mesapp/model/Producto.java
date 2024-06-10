@@ -14,6 +14,10 @@ public class Producto {
         setProveedor(proveedor);
     }
 
+    public Producto(){
+
+    }
+
 
     public int getIdproducto() {
         return id_producto;

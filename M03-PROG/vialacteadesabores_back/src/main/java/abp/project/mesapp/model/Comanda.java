@@ -17,6 +17,8 @@ public class Comanda {
         setPagado(pagado);
         setNum_mesa(num_mesa);
     }
+    public Comanda() {
+    }
 
 
     //GETTERS Y SETTERS

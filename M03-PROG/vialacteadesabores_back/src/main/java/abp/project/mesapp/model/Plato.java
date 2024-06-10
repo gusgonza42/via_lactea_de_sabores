@@ -14,6 +14,8 @@ public class Plato {
         setDescripcion(descripcion);
         setId_chef(id_chef);
     }
+    public Plato() {
+    }
 
 
     //GETTERS Y SETTERS

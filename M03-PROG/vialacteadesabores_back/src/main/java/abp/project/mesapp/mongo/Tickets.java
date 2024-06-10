@@ -1,8 +1,7 @@
-package abp.project.mesapp.model;
+package abp.project.mesapp.mongo;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
-import lombok.Getter;
 import org.bson.Document;
 
 import java.util.Date;
@@ -21,6 +20,8 @@ public class Tickets {
         setWaiter(waiter);
         setDate(date);
         setNumDinners(num_diners);
+    }
+    public Tickets() {
     }
 
     public void setOrder(int order) {
@@ -43,11 +44,35 @@ public class Tickets {
         this.num_diners = num_diners;
     }
 
+    public int getOrder() {
+        return order;
+    }
+
+    public int getTable() {
+        return table;
+    }
+
+    public int getWaiter() {
+        return waiter;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public int getNum_diners() {
+        return num_diners;
+    }
+
+    public void setNum_diners(int num_diners) {
+        this.num_diners = num_diners;
+    }
+
     public String toString() {
         return "Order: " + order + ", Table: " + table + ", Waiter: " + waiter + ", Date: " + date + ", Number of diners: " + num_diners;
     }
 
-    public  void saveTicket(MongoClient mongoClient, String databaseName, String collectionName) {
+    public void saveTicket(MongoClient mongoClient, String databaseName, String collectionName) {
         MongoCollection<Document> collection = mongoClient.getDatabase(databaseName).getCollection(collectionName);
 
         Document ticketDocument = new Document();

@@ -16,6 +16,9 @@ public class Camarero extends Usuario{
         setFecha_contratacion(fecha_contratacion);
         setDisponibilidad(disponibilidad);
     }
+    public Camarero(){
+
+    }
 
 
     //GETTERS Y SETTERS

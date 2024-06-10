@@ -1,5 +1,6 @@
-package abp.project.mesapp.model;
+package abp.project.mesapp.mongo;
 
+import abp.project.mesapp.model.Producto;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;

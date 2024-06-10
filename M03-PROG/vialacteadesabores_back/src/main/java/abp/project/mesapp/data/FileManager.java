@@ -91,7 +91,7 @@ public class FileManager {
         return camareros;
     }
 
-    public ArrayList<Mesa> cargaMesaCSV(String rutaDelArchivoCSV) {
+    public ArrayList<Mesa> cargaMesaCSV(String rutaDelArchivoCSV)  {
         ArrayList<Mesa> mesas = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(rutaDelArchivoCSV))) {
             String line;
@@ -103,8 +103,9 @@ public class FileManager {
                 int id_camarero = Integer.parseInt(datos[1]);
                 Date fecha_registro = Date.valueOf(datos[2]);
                 boolean disponibilidad = Boolean.parseBoolean(datos[3]);
+                int max_comensales=Integer.parseInt(datos[4]);
                 // Crea un nuevo objeto Usuario y se añade al array
-                Mesa mesa = new Mesa(num_mesa, id_camarero, fecha_registro, disponibilidad);
+                Mesa mesa = new Mesa(num_mesa, id_camarero, fecha_registro, disponibilidad,max_comensales);
                 mesas.add(mesa);
             }
         } catch (IOException e) {
@@ -214,7 +215,7 @@ public class FileManager {
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");
                 if (fields.length == 4) {
-                    menu_comanda = new Menu_Comanda(Integer.parseInt(fields[0]), Integer.parseInt(fields[1]), fields[2].split("/"));
+                    menu_comanda = new Menu_Comanda(Integer.parseInt(fields[0]), Integer.parseInt(fields[1]), fields[2]);
                     menus_comandas.add(menu_comanda);
                 }
             }
@@ -310,72 +311,10 @@ public class FileManager {
                 }
             }
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return  platos_productos;
     }
 
-    private static class MyArray implements Array {
-        public MyArray(String[] fields) {
-            super();
-        }
-
-        @Override
-        public String getBaseTypeName() throws SQLException {
-            return "";
-        }
-
-        @Override
-        public int getBaseType() throws SQLException {
-            return 0;
-        }
-
-        @Override
-        public Object getArray() throws SQLException {
-            return null;
-        }
-
-        @Override
-        public Object getArray(Map<String, Class<?>> map) throws SQLException {
-            return null;
-        }
-
-        @Override
-        public Object getArray(long index, int count) throws SQLException {
-            return null;
-        }
-
-        @Override
-        public Object getArray(long index, int count, Map<String, Class<?>> map) throws SQLException {
-            return null;
-        }
-
-        @Override
-        public ResultSet getResultSet() throws SQLException {
-            return null;
-        }
-
-        @Override
-        public ResultSet getResultSet(Map<String, Class<?>> map) throws SQLException {
-            return null;
-        }
-
-        @Override
-        public ResultSet getResultSet(long index, int count) throws SQLException {
-            return null;
-        }
-
-        @Override
-        public ResultSet getResultSet(long index, int count, Map<String, Class<?>> map) throws SQLException {
-            return null;
-        }
-
-        @Override
-        public void free() throws SQLException {
-
-        }
-    }
 }

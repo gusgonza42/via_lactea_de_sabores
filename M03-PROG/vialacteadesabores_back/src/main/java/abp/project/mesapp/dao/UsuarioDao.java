@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 
 import java.awt.font.TextHitInfo;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.RecursiveTask;
 
@@ -36,7 +38,6 @@ public class UsuarioDao {
                 throw new CheckError(CheckError.ERROR_USUARIO_NO_EXISTE);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new CheckError(CheckError.ERROR_BBDD_FAIL);
         } finally {
             try {
@@ -44,7 +45,6 @@ public class UsuarioDao {
                     rs.close();
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
                 throw new CheckError(CheckError.ERROR_LECTURA_DATOS);
             }
             try {
@@ -52,7 +52,6 @@ public class UsuarioDao {
                     ps.close();
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
                 throw new CheckError(CheckError.ERROR_LECTURA_DATOS);
             }
             try {
@@ -60,7 +59,6 @@ public class UsuarioDao {
                     conn.close();
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
                 throw new CheckError(CheckError.ERROR_BBDD_FAIL);
             }
         }
@@ -101,7 +99,7 @@ public class UsuarioDao {
             }
 
         } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            throw new CheckError(CheckError.ERROR_BBDD_FAIL_INSERT_NEW_USER);
         }
         return success;
     }
@@ -132,7 +130,6 @@ public class UsuarioDao {
                 throw new CheckError(CheckError.ERROR_USUARIO_NO_EXISTE);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new CheckError(CheckError.ERROR_BBDD_FAIL);
         } finally {
             try {
@@ -140,9 +137,37 @@ public class UsuarioDao {
                 if (ps != null) ps.close();
                 if (conn != null) conn.close();
             } catch (SQLException e) {
-                e.printStackTrace();
                 throw new CheckError(CheckError.ERROR_LECTURA_DATOS);
             }
         }
         return usuario;
-    }}
+    }
+
+    public List<Usuario> selectAllUsuarios()  throws CheckError{
+        List<Usuario> usuariosList = new ArrayList<>();
+        try {
+            Connection conn = DriverManager.getConnection(Constantes.BBDD + Constantes.SCHEMA, Constantes.USER, Constantes.PASS);
+            PreparedStatement ps = conn.prepareStatement(Constantes.SELECT_ALL_USUARIOS);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellido1(rs.getString("apellido1"));
+                usuario.setApellido2(rs.getString("apellido2"));
+                usuario.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setFecha_registro(rs.getDate("fecha_registro"));
+                usuario.setTelefono(rs.getString("telefono"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuariosList.add(usuario);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new CheckError(CheckError.ERROR_LECTURA_DATOS);
+        }
+        return usuariosList;
+    }
+}

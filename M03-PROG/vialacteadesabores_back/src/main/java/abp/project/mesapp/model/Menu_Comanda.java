@@ -5,10 +5,10 @@ public class Menu_Comanda {
     //ATRIBUTOS
     private int id_menu;
     private int id_comanda;
-    private String[] alergenos;
+    private String alergenos;
     //CONSTRUCTOR
 
-    public Menu_Comanda(int id_menu, int id_comanda, String[] alergenos) {
+    public Menu_Comanda(int id_menu, int id_comanda, String alergenos) {
         setId_menu(id_menu);
         setId_comanda(id_comanda);
         setAlergenos(alergenos);
@@ -31,11 +31,11 @@ public class Menu_Comanda {
         this.id_comanda = id_comanda;
     }
 
-    public String[] getAlergenos() {
+    public String getAlergenos() {
         return alergenos;
     }
 
-    public void setAlergenos(String[] alergenos) {
+    public void setAlergenos(String alergenos) {
         this.alergenos = alergenos;
     }
 }

@@ -31,6 +31,24 @@ public class CheckError extends Exception {
     public static final int ERROR_CONNECT_BBDD = 26;
     public static final int ERROR_USER_EXISTS = 27;
     public static final int ERROR_BBDD_FAIL_INSERT_NEW_USER = 28;
+    public static final int ERROR_CARGA_ARCHIVOS = 29;
+    public static final int ERROR_INSERTS_USUARIOS = 30;
+    public static final int ERROR_INSERT_CHEFS = 31;
+    public static final int ERROR_INSERT_CAMARERO = 32;
+    public static final int ERROR_INSERT_MESAS = 33;
+    public static final int ERROR_INSERT_CLIENTE = 34;
+    public static final int ERROR_INSERT_CLIENTE_MESA = 35;
+    public static final int ERROR_INSERT_COMANDA = 36 ;
+    public static final int ERROR_INSERT_MENUS = 37;
+    public static final int ERROR_INSERT_MENU_COMANDA = 38 ;
+    public static final int ERROR_INSERT_PLATOS = 39;
+    public static final int ERROR_INSERT_MENU_PLATO = 40 ;
+    public static final int ERROR_INSERT_PRODUCTOS = 41 ;
+    public static final int ERROR_INSERT_PLATO_PRODUCTO = 42 ;
+    public static final int ERROR_BBDD_DESCONECT = 43;
+    public static final int ERROR_CREATE_MONGOTICKET = 44;
+    public static final int DELETE_RESERVA_ERROR = 45;
+    public static final int ERROR_LISTAR_CLIENTES = 46 ;
 
 
     private final int errorCode;
@@ -63,7 +81,28 @@ public class CheckError extends Exception {
             "ERROR 025: Error en al registrar usuario",
             "ERROR 026: Error al establecer conexión con la BBDD",
             "ERROR 027: Error el usuario ya existe",
-            "ERROR 028: Error en la BBDD al inserta el nuevo usuario"
+            "ERROR 028: Error en la BBDD al inserta el nuevo usuario",
+            "ERROR 029: Error en la carga de datos del csv",
+            "ERROR 030: Error en la inserción de datos de tipo USUARIO",
+            "ERROR 031: Error en la inserción de datos de tipo CHEF",
+            "ERROR 032: Error en la inserción de datos de tipo CAMARERO",
+            "ERROR 033: Error en la inserción de datos de tipo MESA",
+            "ERROR 034: Error en la inserción de datos de tipo CLIENTE",
+            "ERROR 035: Error en la inserción de datos de tipo CLIENTE_MESA",
+            "ERROR 036: Error en la inserción de datos de tipo COMANDA",
+            "ERROR 037: Error en la inserción de datos de tipo MENU",
+            "ERROR 038: Error en la inserción de datos de tipo MENU_COMANDA",
+            "ERROR 039: Error en la inserción de datos de tipo PLATO",
+            "ERROR 040: Error en la inserción de datos de tipo MENU_PLATO",
+            "ERROR 041: Error en la inserción de datos de tipo PRODUCTO",
+            "ERROR 042: Error en la inserción de datos de tipo PLATO_PRODUCTO",
+            "ERROR 043: Error al desconectar de la BBDD",
+            "ERROR 044: Error al crear el ticket en MONGODB",
+            "ERROR 045: Error al borrar la reserva",
+            "ERROR 046: Error al listar los clientes"
+
+
+
     };
 
     public CheckError(int code) {

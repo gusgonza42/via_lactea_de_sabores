@@ -1,5 +1,5 @@
 <template>
-    <div>
+	<div>
     <header>
       <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary container-fluid p-2 " >
         <div>
@@ -28,7 +28,7 @@
             <li class="nav-item">
               <router-link to="/admin" class="nav-link">AdminMode</router-link>
             </li>
-            <li class="nav-item">
+			<li class="nav-item">
               <router-link to="/mongo" class="nav-link">Mongo</router-link>
             </li>
             <li class="nav-item">
@@ -42,54 +42,18 @@
       </nav>
     </header>
 
-    <div class="main-content bg-dark">
-      <h2 class="text-white">Home</h2>
-      <p class="text-white">Bienvenido a la página de inicio. ¡Has iniciado sesión correctamente!</p>
 
-      <div class="home-content">
-        <div class="section">
-          <h3>Sobre Nosotros</h3>
-          <p>En nuestro restaurante, ofrecemos una experiencia culinaria única con ingredientes frescos y de alta calidad.</p>
-        </div>
-        <div class="section">
-          <h3>Menú Destacado</h3>
-          <p>Descubre nuestros platos más populares y las especialidades del chef.</p>
-            <ul class="list-group">
-              <li class="list-group-item">Agujero Negro</li>
-              <li class="list-group-item">Supernova</li>
-              <li class="list-group-item">Galaxia Espiral</li>
-            </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="text-center">Más</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Otras funcionalidades</h5>
-            <p class="card-text">Aquí podrás encontrar otras funcionalidades del restaurante.</p>
-            <router-link to="/mas" class="btn btn-primary">Ver más</router-link>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 </template>
 
 <script>
 export default {
-  // Puedes agregar lógica específica del componente aquí si es necesario
+  // No necesitas lógica específica en este componente
 };
 </script>
 
+
 <style scoped>
-@import "../assets/css/about.css";
+
 
 </style>

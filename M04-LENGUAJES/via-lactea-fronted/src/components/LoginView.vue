@@ -59,6 +59,8 @@ export default {
         // Error en la solicitud HTTP
         console.error('Error en la solicitud HTTP:', error);
         alert('Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde.');
+        //this.$router.push('/home');
+
       }
     }
   }

@@ -17,6 +17,9 @@ public class Chef extends Usuario{
         setFechaContratacion(fechaContratacion);
         setDisponible(disponible);
     }
+    public Chef(){
+
+    }
 
     //GETTERS Y SETTERS
     public double getSalario() {

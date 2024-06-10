@@ -1,19 +1,19 @@
 package abp.project.mesapp.controller;
 
 import abp.project.mesapp.dao.MesaDao;
+import abp.project.mesapp.dao.PlatoDao;
+import abp.project.mesapp.mongo.TicketsDao;
 import abp.project.mesapp.dao.UsuarioDao;
 import abp.project.mesapp.model.*;
+import abp.project.mesapp.mongo.Tickets;
 import abp.project.mesapp.service.MesappService;
-import abp.project.mesapp.database.DataBaseConnection;
 import abp.project.mesapp.util.CheckError;
-import org.apache.tomcat.util.json.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -24,25 +24,17 @@ public class MesappController {
 
     @Autowired
     public UsuarioDao usuarioDao;
-
+    @Autowired
     public MesaDao mesaDao;
 
-    //INICIO MAIN
-    /*@GetMapping("/main")
-    public ResponseEntity<?> Welcome() throws SQLException {
-        //return ResponseEntity.ok("Hello World!");
-        DataBaseConnection db = new DataBaseConnection();
-        db.init();
-        MenuFunciones menu = new MenuFunciones();
-        menu.menuFunciones(db);
-        //DESCONECTAR
-        db.desconectar();
-        return ResponseEntity.ok().build();
-    }*/
+    public TicketsDao ticketsDao;
 
+    public PlatoDao platoDao;
+
+    //CHECK LOGIN
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Usuario user) {
-        System.out.println("Datos del cliente");
+        System.out.println("ALGUIEN ESTA INTENTANDO ENTRAR!");
         System.out.println("Email: " + user.getEmail());
         System.out.println("Contraseña: " + user.getContrasena());
         try {
@@ -81,11 +73,13 @@ public class MesappController {
         }
     }
 
+    //MOSTRAR MESAS llamndo a masappService
     @GetMapping("/mesapp/{id}")
-    public ResponseEntity<?> getMesapp(@PathVariable("id") int option) {
+    public ResponseEntity<?> getMesapp(@PathVariable("id") int option) throws CheckError {
         return mesappService.getMesapp(option);
     }
 
+    //Mostrar info del perfil (no func)
     @GetMapping("/perfil")
     public ResponseEntity<Usuario> getPerfil(@RequestParam String email) {
         return mesappService.getPerfil(email);
@@ -106,6 +100,43 @@ public class MesappController {
         return mesappService.postXXXX(option, body);
     }
      */
+
+    //MOSTRAR HISTORIAL DE RESERVAS DE 1 CLIENTE
+    @GetMapping("/peril/{id}")
+    public ResponseEntity<?> getReservasHistorial(@PathVariable("id") int idCliente) throws CheckError {
+        List<Cliente_Mesa> reservas = mesaDao.getReservasHistorial(idCliente);
+        if (reservas != null) {
+            return ResponseEntity.ok(reservas);
+        } else {
+            return ResponseEntity.status(401).body("Error al listar las reservas");
+        }
+    }
+
+    //GET MONGO
+//    @GetMapping("/mongo")
+//    public ResponseEntity<?> comandaMongo(@RequestBody Tickets newTicket) throws CheckError {
+//        System.out.println("Datos de mongoTicket");
+//        System.out.println("Order : " + newTicket.getOrder());
+//        System.out.println("Table: " + newTicket.getTable());
+//        System.out.println("Waiter: " + newTicket.getWaiter());
+//        System.out.println("Fecha: " + newTicket.getDate());
+//        System.out.println("MaxComensales" + newTicket.getNum_diners());
+//        TicketsDao ticketsDao = new TicketsDao();
+//        try {
+//            //boolean insertTicket = ticketsDao.newTicket(newTicket);
+//            if (insertTicket) {
+//                return ResponseEntity.ok().build();
+//            } else {
+//                return ResponseEntity.status(401).body("CredencialesIncorrectas");
+//            }
+//        } catch (CheckError e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+    public ResponseEntity postXXXX(@PathVariable("id") int option,
+                                   @RequestBody Body body) {
+        return mesappService.postXXXX(option, body);
+    }
 
     //MAPEO USUARIO
     @PostMapping("/mesapp/Usuario")
@@ -139,8 +170,7 @@ public class MesappController {
 
     //MAPEO RESERVA
     @PostMapping("/reserva")
-    public ResponseEntity<?> nuevaReserva(@RequestBody Cliente_Mesa userReserva, @RequestParam int userId) {
-        try {
+    public ResponseEntity<?> nuevaReserva(@RequestBody Cliente_Mesa userReserva, @RequestParam int userId) throws CheckError {
             int reservaId = mesaDao.nuevaReserva(userId, userReserva.getNum_mesa(), userReserva.getFecha_reserva());
 
             if (reservaId > 0) {
@@ -148,9 +178,7 @@ public class MesappController {
             } else {
                 return ResponseEntity.status(401).body("Error en la reserva");
             }
-        } catch (CheckError e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
 
@@ -176,17 +204,43 @@ public class MesappController {
     }
 
     //MAPEO PLATO
-    @PostMapping("/mesapp/Plato")
+    @PostMapping("/mesapp/PlatosAll")
     public ResponseEntity postPlato(@PathVariable("id") int option,
                                     @RequestBody Plato plato) {
         return mesappService.postPlato(option, plato);
     }
 
     //MAPEO PRODUCTO
-    @PostMapping("/mesapp/Produtcot")
+    @PostMapping("/mesapp/Producto")
     public ResponseEntity postProducto(@PathVariable("id") int option,
                                        @RequestBody Producto producto) {
         return mesappService.postProducto(option, producto);
+    }
+
+    // MOSTRAR PLATOS
+    @GetMapping("/mesapp/PlatosAll")
+    public ResponseEntity postPlato() {
+        try {
+            ArrayList<Plato> platos = platoDao.getPlatos();
+            if (platos != null) {
+                return ResponseEntity.ok(platos);
+            } else {
+                return ResponseEntity.status(401).body("Error al listar los platos");
+            }
+        } catch (CheckError e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //DELETE PLATOS POR ID
+    @DeleteMapping("/mesapp/PlatosAll/{id}")
+    public ResponseEntity<?> deletePlato(@PathVariable("id") int id) {
+        boolean deleted = platoDao.deletePlato(id);
+        if (deleted) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(401).body("Error al borrar el plato");
+        }
     }
 
 

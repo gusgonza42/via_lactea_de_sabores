@@ -16,6 +16,9 @@ public class Cliente extends Usuario{
         setFecha_ultimaReserva(fecha_ultimaReserva);
     }
 
+    public Cliente() {
+    }
+
     //GETTERS I SETTERS
     public int getComensales() {
         return comensales;
